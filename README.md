@@ -23,7 +23,7 @@ map = [
 
 And the result:
 
-![image](https://user-images.githubusercontent.com/45121219/112775790-36ff3880-903e-11eb-8972-785708275246.png)
+![image](https://user-images.githubusercontent.com/45121219/112855910-93e70700-90af-11eb-9fac-66edc06ff7c2.png)
 
 Now that you defined map, you can render the labyrinth using `grid()` function:
 
