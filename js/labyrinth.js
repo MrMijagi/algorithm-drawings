@@ -8,20 +8,13 @@ function cell(x, y, width, height) {
 }
 
 function closed_cell(x, y, width, height) {
-  var path1 = new paper.Path({
-    segments: [[x, y], [x + width, y + height]]
+  var square = new paper.Path.Rectangle({
+    point: [x, y],
+    size: [width, height]
   });
-  path1.style = {
-    strokeWidth: 2,
-    strokeColor: '#f00'
-  };
-
-  var path2 = new paper.Path({
-    segments: [[x + width, y], [x, y + height]]
-  });
-  path2.style = path1.style;
-
-  cell(x, y, width, height);
+  square.strokeWidth = 2;
+  square.strokeColor = '#000';
+  square.fillColor = '#333';
 }
 
 function horizontal_cell(x, y, width, height) {
