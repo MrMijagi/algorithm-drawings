@@ -65,7 +65,7 @@ window.onload = function() {
 
   //red_black_tree(tree, 800, 50, 20, 0.5, 1);
   //grid(map2, 20, 20, 30, 30);
-  graph(nodes, connections, false, 10, 10, 50, 0.4);
+  graph(nodes, connections, false, 10, 10, 50, 0.8);
 
   paper.view.draw();
 }

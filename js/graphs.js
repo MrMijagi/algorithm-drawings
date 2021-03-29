@@ -13,7 +13,7 @@ function node(x, y, radius, value) {
     fillColor: '#000',
     fontFamily: 'Courier New',
     fontWeight: 'bold',
-    fontSize: radius * 0.8,
+    fontSize: radius * 1,
     justification: 'center'
   });
 }
@@ -58,6 +58,6 @@ export function graph(nodes, connections, directed, x_pos, y_pos, tile_size, sca
     var val = nodes[index];
     var offset = get_node_offset(val[0], val[1], tile_size);
 
-    node(x_pos + offset[0], y_pos + offset[1], tile_size * scale, val[2]);
+    node(x_pos + offset[0], y_pos + offset[1], (tile_size / 2) * scale, val[2]);
   });
 }
