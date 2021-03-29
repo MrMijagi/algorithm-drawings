@@ -27,7 +27,9 @@ And the result:
 
 Now that you defined map, you can render the labyrinth using `grid()` function:
 
-`grid(map, x, y, tile_width, tile_height);`
+```
+grid(map, x, y, tile_width, tile_height);
+```
 
 Where `x` and `y` determine starting position of the labyrinth, and `tile_width`/`tile_height` define size of one cell.
 
