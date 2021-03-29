@@ -12,14 +12,15 @@ To create a labyrinth, you first need to make a map that is simply a two-dimenso
 
 Here is small example:
 
-`map = [
-  ['' , ' ' , 'v' , ' '],
-  ['' , 'x' , 'v' , ' '],
-  [' ', 'br', 'tl', ' '],
-  [' ', 'v' , 'x' , '' ],
+`map = [\
+  ['' , ' ' , 'v' , ' '],\
+  ['' , 'x' , 'v' , ' '],\
+  [' ', 'br', 'tl', ' '],\
+  [' ', 'v' , 'x' , '' ],\
 ];`
 
 And the result:
+
 ![image](https://user-images.githubusercontent.com/45121219/112775790-36ff3880-903e-11eb-8972-785708275246.png)
 
 Now that you defined map, you can render the labyrinth using `grid()` function:
