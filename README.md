@@ -12,12 +12,14 @@ To create a labyrinth, you first need to make a map that is simply a two-dimenso
 
 Here is small example:
 
-`map = [\
-  ['' , ' ' , 'v' , ' '],\
-  ['' , 'x' , 'v' , ' '],\
-  [' ', 'br', 'tl', ' '],\
-  [' ', 'v' , 'x' , '' ],\
-];`
+```
+map = [
+  ['' , ' ' , 'v' , ' '],
+  ['' , 'x' , 'v' , ' '],
+  [' ', 'br', 'tl', ' '],
+  [' ', 'v' , 'x' , '' ],
+];
+```
 
 And the result:
 
