@@ -82,7 +82,7 @@ window.onload = function() {
   var canvas = document.getElementById("myCanvas");
   paper.setup(canvas);
 
-  // set canvas size for background (put bigger values if needed)
+  // set canvas size for background (put bigger values if background doesn't cover entire drawing)
   var size = new paper.Size(1600, 1600);
   set_canvas_size(size);
 
