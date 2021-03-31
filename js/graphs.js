@@ -35,7 +35,7 @@ function get_node_offset(x, y, tile_size) {
   return [x_offset, y_offset];
 }
 
-export function graph(nodes, connections, directed, x_pos, y_pos, tile_size, scale) {
+export function graph(nodes, connections, directed, tile_size, scale) {
   Object.keys(connections).forEach(function(index) {
     var val = connections[index];
 
@@ -46,18 +46,29 @@ export function graph(nodes, connections, directed, x_pos, y_pos, tile_size, sca
     var end_offset = get_node_offset(node_end[0], node_end[1], tile_size);
 
     connect_nodes(
-      x_pos + start_offset[0],
-      y_pos + start_offset[1],
-      x_pos + end_offset[0],
-      y_pos + end_offset[1],
+      start_offset[0],
+      start_offset[1],
+      end_offset[0],
+      end_offset[1],
       val[2]
     );
   });
+
+  var max_x = 0;
+  var max_y = 0;
 
   Object.keys(nodes).forEach(function(index) {
     var val = nodes[index];
     var offset = get_node_offset(val[0], val[1], tile_size);
 
-    node(x_pos + offset[0], y_pos + offset[1], (tile_size / 2) * scale, val[2]);
+    if (val[0] > max_x) max_x = val[0];
+    if (val[1] > max_y) max_y = val[1];
+
+    node(offset[0], offset[1], (tile_size / 2) * scale, val[2]);
   });
+
+  var width = (max_x + 1) * tile_size;
+  var height = (max_y + 1) * tile_size;
+
+  return new paper.Size(width, height);
 }

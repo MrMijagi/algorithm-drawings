@@ -64,11 +64,18 @@ function find_position_offset_from_index(index, max_level, node_radius, x_scale,
   return [x_offset, y_offset];
 }
 
-export function red_black_tree(tree, x, y, node_radius, x_scale, y_scale) {
+export function red_black_tree(tree, node_radius, x_scale, y_scale) {
   var keys = Object.keys(tree);
   keys.sort();
 
   var max_level = level_from_index(keys[keys.length - 1]);
+
+  var x = node_radius + 2;
+  for (var i = 1; i <= max_level; i++) {
+    var curr_relative_level = max_level - i;
+    x += Math.pow(2, 2 + curr_relative_level) * node_radius * x_scale;
+  }
+  var y = node_radius + 2;
 
   keys.forEach(function(key) {
     // find offset
@@ -100,14 +107,9 @@ export function red_black_tree(tree, x, y, node_radius, x_scale, y_scale) {
       black_node(x + offset[0], y + offset[1], node_radius, value);
     }
   });
-}
 
-export function test() {
-  var path = new paper.Path({
-    segments: [[0, 0], [20, 20]]
-  });
-  path.style = {
-    strokeWidth: 2,
-    strokeColor: '#000'
-  };
+  var width = x * 2;
+  var height = node_radius * y_scale * (4 * max_level + 2);
+
+  return new paper.Size(width, height + 4);
 }

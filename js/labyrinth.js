@@ -99,15 +99,16 @@ function bottom_left_cell(x, y, width, height) {
   cell(x, y, width, height);
 }
 
-export function grid(map, x, y, tile_width, tile_height) {
+export function grid(map, tile_width, tile_height) {
   var y_size = map.length;
   var x_size = map[0].length;
 
   for (var i = 0; i < y_size; i++) {
     for (var j = 0; j < x_size; j++) {
       var value = map[i][j];
-      var x_pos = j * tile_width + x;
-      var y_pos = i * tile_height + y;
+      var x_pos = j * tile_width;
+      var y_pos = i * tile_height;
+      console.log(x_pos, y_pos);
 
       if (value === 'x') {
         closed_cell(x_pos, y_pos, tile_width, tile_height);
@@ -128,4 +129,9 @@ export function grid(map, x, y, tile_width, tile_height) {
       }
     }
   }
+
+  var width = x_size * tile_width;
+  var height = y_size * tile_height;
+
+  return new paper.Size(width, height);
 }

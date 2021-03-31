@@ -2,6 +2,24 @@ import { red_black_tree } from './js/red_black_tree.js';
 import { grid } from './js/labyrinth.js';
 import { graph } from './js/graphs.js';
 
+function background(color) {
+  var canvas = document.getElementById('myCanvas');
+  var width = canvas.width;
+  var height = canvas.height;
+
+  new paper.Path.Rectangle({
+    point: [0, 0],
+    size: [width, height],
+    fillColor: color
+  });
+}
+
+function set_canvas_size(size) {
+  var canvas = document.getElementById('myCanvas');
+  canvas.width  = size.width;
+  canvas.height = size.height;
+}
+
 var tree = { 
   1:["104","red"], 
   2:["83","black"], 
@@ -13,7 +31,8 @@ var tree = {
   8:["NIL", "black"],
   9:["NIL", "black"],
   12:["NIL", "black"],
-  13:["NIL", "black"]
+  13:["NIL", "black"],
+  15:["NIL", "black"]
 };
 
 var tree2 = { 
@@ -63,9 +82,27 @@ window.onload = function() {
   var canvas = document.getElementById("myCanvas");
   paper.setup(canvas);
 
-  //red_black_tree(tree, 800, 50, 20, 0.5, 1);
-  //grid(map2, 20, 20, 30, 30);
-  graph(nodes, connections, false, 10, 10, 50, 0.8);
+  // set canvas size for background (put bigger values if needed)
+  var size = new paper.Size(1600, 1600);
+  set_canvas_size(size);
+
+  //background
+  background('#faa');
+
+  // RB Tree
+  size = red_black_tree(tree, 20, 0.5, 1);
+
+  // Labirynth
+  //size = grid(map, 30, 30);
+
+  // Graph
+  //size = graph(nodes, connections, false, 50, 0.8);
+
+  // crop canvas size to rendered content
+  set_canvas_size(size);
 
   paper.view.draw();
+
+  // Download picture
+  //paper.view.element.toBlob(function(blob) { saveAs(blob, "image.png");});
 }
