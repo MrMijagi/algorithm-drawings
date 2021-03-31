@@ -1,10 +1,16 @@
 # algorithm-drawings
 
-After cloning repo, run `npm install paper` inside, so paper.js will be able to work.
+This repo provides an easy way to draw labyrinths, red-black trees and graphs by simply defining their structure in text. It uses [paper.js](http://paperjs.org/) for drawing on canvas and [FileSaver.js](https://github.com/eligrey/FileSaver.js/) for exporting canvas content to .png images.
+
+After cloning repo, run `npm install` inside, so modules will be ready to work.
 
 If you don't have `npm` install it from here: https://www.npmjs.com/get-npm
 
-To run the example, just open `index.html` in browser.
+To run code, setup simple web server (for example with [http-server](https://www.npmjs.com/package/http-server)) and start website in browser.
+
+# Usage
+
+All operations mentioned below should be done inside `main.js` script.
 
 ## Creating labyrinths
 
@@ -24,12 +30,12 @@ map = [
 Now that you defined map, you can render the labyrinth using `grid()` function:
 
 ```
-grid(map, x, y, tile_width, tile_height);
+grid(map, tile_width, tile_height);
 ```
 
-Where `x` and `y` determine starting position of the labyrinth, and `tile_width`/`tile_height` define size of one cell.
+Where `tile_width`/`tile_height` define size of one cell.
 
-And the result:
+Example result:
 
 ![image](https://user-images.githubusercontent.com/45121219/112855910-93e70700-90af-11eb-9fac-66edc06ff7c2.png)
 
@@ -69,12 +75,12 @@ tree = {
 Now you can render tree by calling `red_black_tree` function:
 
 ```
-red_black_tree(tree, x, y, node_radius, x_scale, y_scale);
+red_black_tree(tree, node_radius, x_scale, y_scale);
 ```
 
-Where `x` and `y` determine center of root node, `node_radius` is self-explanatory, `x_scale` stretches the tree in X-axis and `y_scale` stretches the tree in Y-asix.
+Where `node_radius` is self-explanatory, `x_scale` stretches the tree in X-axis and `y_scale` stretches the tree in Y-asix.
 
-This will be the result:
+Example result:
 
 ![image](https://user-images.githubusercontent.com/45121219/112847127-0acbd200-90a7-11eb-9e61-ae5585af78ee.png)
 
@@ -110,12 +116,12 @@ var connections = {
 Now we call `graph` function:
 
 ```
-graph(nodes, connections, directed, x, y, tile_size, scale);
+graph(nodes, connections, directed, tile_size, scale);
 ```
 
-Nodes and connections are explained below; `directed` is flag which determines if graph is directed or not (not implemented yet; for now graphs are non directed only), `x` and `y` is the starting point of the grid, `tile_size` is size of one cell in the grid and scale determines how big node is inside the cell (`1` means diameter of the node is equal to `tile_size`).
+Where `directed` is flag which determines whether graph is directed or not (not implemented yet; for now graphs are non directed only), `tile_size` is size of one cell in the grid and `scale` determines how big node is inside the cell (`1` means diameter of the node is equal to `tile_size`).
 
-And the result:
+Example result:
 
 ![image](https://user-images.githubusercontent.com/45121219/112864443-18d61e80-90b8-11eb-9f44-115fed1ef580.png)
 
@@ -123,3 +129,18 @@ Nodes is dictionary with keys identyfing node and value is array where first two
 
 Nodes are placed inside grid that itself is invisible. The point of it is to make it easy to align nodes witch each other.
 
+## Exporting to .png
+
+To export and download content of canvas, uncomment this line:
+
+```
+paper.view.element.toBlob(function(blob) { saveAs(blob, "image.png");});
+```
+
+Now each time the website will be refreshed, the image will be downloaded. All images will go to folder specified by browser, so it may be good idea to change it to more suiting place (in my case I don't use Edge browser, so I run the website there and all images go to separate folder).
+
+It is possible to set background (or make transparent image) by uncommenting/commenting this line:
+
+```
+background(color);
+```
