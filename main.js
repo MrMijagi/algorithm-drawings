@@ -104,5 +104,8 @@ window.onload = function() {
   paper.view.draw();
 
   // Download picture
+  document.getElementById("clickMe").onclick = function () {
+    paper.view.element.toBlob(function(blob) { saveAs(blob, "image.png");});
+  };
   //paper.view.element.toBlob(function(blob) { saveAs(blob, "image.png");});
 }
