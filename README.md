@@ -131,15 +131,9 @@ Nodes are placed inside grid that itself is invisible. The point of it is to mak
 
 ## Exporting to .png
 
-To export and download content of canvas, uncomment this line:
+To export and download content of canvas, just click the button above the drawing.
 
-```
-paper.view.element.toBlob(function(blob) { saveAs(blob, "image.png");});
-```
-
-Now each time the website will be refreshed, the image will be downloaded. All images will go to folder specified by browser, so it may be good idea to change it to more suiting place (in my case I don't use Edge browser, so I run the website there and all images go to separate folder).
-
-It is possible to set background (or make transparent image) by uncommenting/commenting this line:
+It is possible to set background (or make transparent image) by uncommenting/commenting this line and setting whatever color you like:
 
 ```
 background(color);
