@@ -45,13 +45,15 @@ var tree2 = {
 };
 
 var map = [
-  ['x' , 'v' , 'x' , 'x' , 'x' , 'x' , 'x' ],
-  ['x' , 'tr', 'h' , 'h' , 'bl', ' ' , ' ' ],
-  ['x' , ' ' , 'x' , 'x' , 'v' , 'x' , ' ' ],
-  ['x' , ' ' , 'x' , 'x' , 'v' , 'x' , ' ' ],
-  ['x' , ' ' , 'br', 'h' , 'tl', ' ' , ' ' ],
-  ['x' , 'x' , 'v' , 'x' , 'x' , 'x' , 'x' ],
-  ['x' , 'x' , 'v' , 'x' , 'x' , 'x' , 'x' ],
+  ['' , 't:S' , '' , '' , '' , '' , '' ],
+  ['x' , 'd' , 'x' , 'x' , 'x' , 'x' , 'x' ],
+  ['x' , 'tr:#f00', 'ra:#0f0' , 'r:#00f' , 'bl', ' ' , ' ' ],
+  ['x' , ' ' , 'x' , 'x' , 'da' , 'x' , ' ' ],
+  ['x' , ' ' , 'x' , 'x' , 'ua' , 'x' , ' ' ],
+  ['x' , ' ' , 'br', 'la' , 'tl', ' ' , ' ' ],
+  ['x' , 'x' , 'd' , 'x' , 'x' , 'x' , 'x' ],
+  ['x' , 'x' , 'u' , 'x' , 'x' , 'x' , 'x' ],
+  ['' , '' , 't:M' , '' , '' , '' , '' ]
 ];
 
 var map2 = [
@@ -87,13 +89,13 @@ window.onload = function() {
   set_canvas_size(size);
 
   //background
-  background('#faa');
+  //background('rgb(250, 250, 250)');
 
   // RB Tree
-  size = red_black_tree(tree, 20, 0.5, 1);
+  //size = red_black_tree(tree, 20, 0.5, 1);
 
   // Labirynth
-  //size = grid(map, 30, 30);
+  size = grid(map, 40, 50);
 
   // Graph
   //size = graph(nodes, connections, false, 50, 0.8);
@@ -107,5 +109,4 @@ window.onload = function() {
   document.getElementById("clickMe").onclick = function () {
     paper.view.element.toBlob(function(blob) { saveAs(blob, "image.png");});
   };
-  //paper.view.element.toBlob(function(blob) { saveAs(blob, "image.png");});
 }
