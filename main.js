@@ -1,4 +1,4 @@
-import { red_black_tree } from './js/red_black_tree.js';
+import { RBTree, Node } from './js/red_black_tree.js';
 import { grid } from './js/labyrinth.js';
 import { graph } from './js/graphs.js';
 
@@ -21,14 +21,14 @@ function set_canvas_size(size) {
 }
 
 var tree = { 
-  1:["104","red"], 
-  2:["83","black"], 
-  3:["5", "black"],
+  1:["104","red", "", 1], 
+  2:["83","black", "", 90], 
+  3:["5", "black", "active", 84],
   4:["23", "red"],
-  5:["92", "red"],
+  5:["92", "red", "active"],
   6:["16", "red"],
   7:["4", "red"],
-  8:["NIL", "black"],
+  8:["NIL", "black", "", -153],
   9:["NIL", "black"],
   12:["NIL", "black"],
   13:["NIL", "black"],
@@ -89,19 +89,27 @@ window.onload = function() {
   set_canvas_size(size);
 
   //background
-  //background('rgb(250, 250, 250)');
+  background('rgb(200, 200, 200)');
 
   // RB Tree
-  //size = red_black_tree(tree, 20, 0.5, 1);
+  Node.activeColor = '#2bc5f0';
+  var rb_tree = new RBTree(tree, 20, 0.5, 1);
+  rb_tree.init();
+  size = rb_tree.get_size();
 
   // Labirynth
-  size = grid(map, 40, 50);
+  //size = grid(map, 40, 50);
 
   // Graph
   //size = graph(nodes, connections, false, 50, 0.8);
 
   // crop canvas size to rendered content
   set_canvas_size(size);
+
+  // define function for animation
+  paper.view.onFrame = function(event) {
+    // rb_tree.get_node_with_index(2).arrow.rotate(1, rb_tree.get_node_with_index(2).circle.position);
+  } 
 
   paper.view.draw();
 

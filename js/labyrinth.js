@@ -227,7 +227,7 @@ export function grid(map, tile_width, tile_height) {
       var function_name = value[0];
       var function_params = [x_pos, y_pos, tile_width, tile_height];
 
-      // add optional arguments
+      // add optional argument
       if (value.length > 1) function_params.push(value[1]);
       else function_params.push('');
 
