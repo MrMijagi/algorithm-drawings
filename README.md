@@ -20,10 +20,15 @@ Here is small example:
 
 ```
 map = [
-  ['' , ' ' , 'v' , ' '],
-  ['' , 'x' , 'v' , ' '],
-  [' ', 'br', 'tl', ' '],
-  [' ', 'v' , 'x' , '' ],
+  ['' , 't:S' , '' , '' , '' , '' , '' ],
+  ['x' , 'd' , 'x' , 'x' , 'x' , 'x' , 'x' ],
+  ['x' , 'tr:#f00', 'ra:#0f0' , 'r:#00f' , 'bl', ' ' , ' ' ],
+  ['x' , ' ' , 'x' , 'x' , 'da' , 'x' , ' ' ],
+  ['x' , ' ' , 'x' , 'x' , 'ua' , 'x' , ' ' ],
+  ['x' , ' ' , 'br', 'la' , 'tl', ' ' , ' ' ],
+  ['x' , 'x' , 'd' , 'x' , 'x' , 'x' , 'x' ],
+  ['x' , 'x' , 'u' , 'x' , 'x' , 'x' , 'x' ],
+  ['' , '' , 't:M' , '' , '' , '' , '' ]
 ];
 ```
 
@@ -37,18 +42,27 @@ Where `tile_width`/`tile_height` define size of one cell.
 
 Example result:
 
-![image](https://user-images.githubusercontent.com/45121219/112855910-93e70700-90af-11eb-9fac-66edc06ff7c2.png)
+![image (6)](https://user-images.githubusercontent.com/45121219/113308683-b161de00-9306-11eb-858f-b26ea3213b8a.png)
 
 Now list of what cells are available to render:
 * `''` (empty string) - no cell is being rendered
 * `' '` (space) - empty cell
-* `'x'` - red crossed cell
-* `'v'` - vertical path
-* `'h'` - horizontal path
+* `'x'` - cell with gray background
+* `'u'` - vertical path (upward direction)
+* `'d'` - vertical path (downward direction)
+* `'l'` - horizontal path (leftward direction)
+* `'r'` - horizontal path (rightward direction)
+* `'ua'` - vertical path with arrow (upward direction)
+* `'da'` - vertical path with arrow (downward direction)
+* `'la'` - horizontal path with arrow (leftward direction)
+* `'ra'` - horizontal path with arrow (rightward direction)
 * `'tl'` - path connecting top side with left side
 * `'tr'` - path connecting top side with right side
 * `'bl'` - path connecting bottom side with left side
-* '`br'` - path connecting bottom side with right side
+* `'br'` - path connecting bottom side with right side
+* `'t:[text]'` - cell containing text defined after colon (one letter only)
+
+Note that for cells where paths are drawn, you can set the color of the path by adding `:[color]` suffix. For example, `ua:#f00'` or `ua:rgb(255, 0 0)` will set the color of the path to red.
 
 ## Creating red-black trees
 
