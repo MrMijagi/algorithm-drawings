@@ -110,9 +110,6 @@ var tree2 = {
   },
 }
 
-var blob = new Blob([JSON.stringify(tree2)], {type: "application/json"});
-saveAs(blob, "RBTreeExample.json");
-
 var map = [
   ['' , 't:S' , '' , '' , '' , '' , '' ],
   ['x' , 'd' , 'x' , 'x' , 'x' , 'x' , 'x' ],
@@ -153,37 +150,59 @@ window.onload = function() {
   var canvas = document.getElementById("myCanvas");
   paper.setup(canvas);
 
-  // set canvas size for background (put bigger values if background doesn't cover entire drawing)
-  var size = new paper.Size(1600, 1600);
-  set_canvas_size(size);
+  // create the editor
+  const container = document.getElementById("jsoneditor")
+  const options = {
+    mode: 'code',
+    modes: ['code', 'form', 'text', 'tree', 'view', 'preview'],
+    onChange: function() {
+      const structure = editor.get();
+  
+      // reset the canvas
+      paper.project.activeLayer.removeChildren();
+  
+      // set canvas size for background (put bigger values if background doesn't cover entire drawing)
+      var size = new paper.Size(1600, 1600);
+      set_canvas_size(size);
+  
+      //background
+      background('rgb(200, 200, 200)');
+  
+      // RB Tree
+      Node.activeColor = '#2bc5f0';
+      var rb_tree = new RBTree(structure, 20, 0.5, 1);
+      rb_tree.init();
+      size = rb_tree.get_size();
+  
+      // Labirynth
+      //size = grid(map, 40, 50);
+  
+      // Graph
+      //size = graph(nodes, connections, false, 50, 0.8);
+  
+      // crop canvas size to rendered content
+      set_canvas_size(size);
+  
+      paper.view.draw();
+    }
+  }
+  const editor = new JSONEditor(container, options)
 
-  //background
-  background('rgb(200, 200, 200)');
+  // Load a JSON document
+  FileReader.setupInput(document.getElementById('loadDocument'), {
+    readAsDefault: 'Text',
+    on: {
+      load: function (event, file) {
+        editor.setText(event.target.result)
+      }
+    }
+  })
 
-  // RB Tree
-  Node.activeColor = '#2bc5f0';
-  var rb_tree = new RBTree(tree2, 20, 0.5, 1);
-  rb_tree.init();
-  size = rb_tree.get_size();
-
-  // Labirynth
-  //size = grid(map, 40, 50);
-
-  // Graph
-  //size = graph(nodes, connections, false, 50, 0.8);
-
-  // crop canvas size to rendered content
-  set_canvas_size(size);
-
-  // define function for animation
-  paper.view.onFrame = function(event) {
-    // rb_tree.get_node_with_index(2).arrow.rotate(1, rb_tree.get_node_with_index(2).circle.position);
-  } 
-
-  paper.view.draw();
+  // set json
+  editor.set(tree2);
 
   // Download picture
-  document.getElementById("clickMe").onclick = function () {
+  document.getElementById("export").onclick = function() {
     paper.view.element.toBlob(function(blob) { saveAs(blob, "image.png");});
   };
 }
