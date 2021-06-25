@@ -1,4 +1,4 @@
-import { RBTree, Node } from './js/red_black_tree.js';
+import { RBTree } from './js/red_black_tree.js';
 import { grid } from './js/labyrinth.js';
 import { graph } from './js/graphs.js';
 
@@ -35,14 +35,83 @@ var tree = {
   15:["NIL", "black"]
 };
 
-var tree2 = { 
-  1:["104","red"], 
-  2:["83","black"], 
-  3:["5", "black"],
-  4:["23", "red"],
-  6:["16", "red"],
-  7:["4", "red"]
-};
+var tree2 = {
+  1: {
+    "value": "104",
+    "color": "red",
+    "flag": "",
+    "angle": 1
+  },
+  2: {
+    "value": "83",
+    "color": "black",
+    "flag": "",
+    "angle": 90
+  },
+  3: {
+    "value": "5",
+    "color": "black",
+    "flag": "active",
+    "angle": 84
+  },
+  4: {
+    "value": "23",
+    "color": "red",
+    "flag": "",
+    "angle": 0
+  },
+  5: {
+    "value": "92",
+    "color": "red",
+    "flag": "active",
+    "angle": 0
+  },
+  6: {
+    "value": "16",
+    "color": "red",
+    "flag": "",
+    "angle": 0
+  },
+  7: {
+    "value": "4",
+    "color": "red",
+    "flag": "",
+    "angle": 0
+  },
+  8: {
+    "value": "NIL",
+    "color": "black",
+    "flag": "",
+    "angle": -153
+  },
+  9: {
+    "value": "NIL",
+    "color": "black",
+    "flag": "",
+    "angle": 0
+  },
+  12: {
+    "value": "NIL",
+    "color": "black",
+    "flag": "",
+    "angle": 0
+  },
+  13: {
+    "value": "NIL",
+    "color": "black",
+    "flag": "",
+    "angle": 0
+  },
+  15: {
+    "value": "NIL",
+    "color": "black",
+    "flag": "",
+    "angle": 0
+  },
+}
+
+var blob = new Blob([JSON.stringify(tree2)], {type: "application/json"});
+saveAs(blob, "RBTreeExample.json");
 
 var map = [
   ['' , 't:S' , '' , '' , '' , '' , '' ],
@@ -93,7 +162,7 @@ window.onload = function() {
 
   // RB Tree
   Node.activeColor = '#2bc5f0';
-  var rb_tree = new RBTree(tree, 20, 0.5, 1);
+  var rb_tree = new RBTree(tree2, 20, 0.5, 1);
   rb_tree.init();
   size = rb_tree.get_size();
 

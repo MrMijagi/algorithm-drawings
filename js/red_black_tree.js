@@ -1,4 +1,4 @@
-export class Node {
+class Node {
   constructor(index, value, isRed, active, rotate) {
     this.index = index;
     this.value = value;
@@ -57,6 +57,7 @@ export class Node {
       strokeColor: '#000'
     });
 
+    // rotate the arrow around the node
     if (this.rotate == 0) {
       this.arrow.strokeWidth = 0;
       this.arrow_head.strokeWidth = 0;
@@ -93,9 +94,9 @@ export class RBTree {
     // add all nodes to array
     this.nodes = [];
     for (let key of keys) {
-      var isRed = (tree[key][1] === 'red' ? true : false);
-      var isActive = (tree[key][2] === 'active' ? true : false);
-      this.nodes.push(new Node(key, tree[key][0], isRed, isActive, tree[key][3]));
+      var isRed = (tree[key]["color"] === 'red' ? true : false);
+      var isActive = (tree[key]["flag"] === 'active' ? true : false);
+      this.nodes.push(new Node(key, tree[key]["value"], isRed, isActive, tree[key]["angle"]));
     };
 
     this.connections = [];
