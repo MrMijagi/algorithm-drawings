@@ -1,5 +1,5 @@
 import { RBTree } from './js/red_black_tree.js';
-import { grid } from './js/labyrinth.js';
+import { Labyrinth } from './js/labyrinth.js';
 import { graph } from './js/graphs.js';
 
 function background(color) {
@@ -83,7 +83,7 @@ var connections = {
 // dict with all structure classes. They have to implement methods init and get_size
 const structures = {
   "RBTree": RBTree,
-  "Labyrinth": grid,
+  "Labyrinth": Labyrinth,
   "Graph": graph,
 }
 

@@ -1,0 +1,21 @@
+{
+  "name": "Labyrinth",
+  "params": {
+    "tile_width": 100,
+    "tile_height": 100
+  },
+  "structure": [
+    [
+      {"line_type": "Closed", "arrow_type": "up", "background_color": "#fff", "path_color": "#000", "text": ""},
+      {"line_type": "Open", "arrow_type": "up", "background_color": "#fff", "path_color": "#000", "text": ""}
+    ],
+    [
+      {"line_type": "Closed", "arrow_type": "up", "background_color": "#fff", "path_color": "#000", "text": ""},
+      {"line_type": "Open", "arrow_type": "up", "background_color": "#fff", "path_color": "#000", "text": ""}
+    ],
+    [
+      {"line_type": "", "arrow_type": "up", "background_color": "#fff", "path_color": "", "text": ""},
+      {"line_type": "", "arrow_type": "up", "background_color": "#fff", "path_color": "", "text": ""}
+    ]
+  ]
+}

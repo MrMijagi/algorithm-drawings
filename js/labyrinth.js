@@ -1,23 +1,4 @@
-function cell(x, y, width, height) {
-  var square = new paper.Path.Rectangle({
-    point: [x, y],
-    size: [width, height]
-  });
-  square.strokeWidth = 2;
-  square.strokeColor = '#000';
-}
-
-function closed_cell(x, y, width, height) {
-  var square = new paper.Path.Rectangle({
-    point: [x, y],
-    size: [width, height]
-  });
-  square.strokeWidth = 2;
-  square.strokeColor = '#000';
-  square.fillColor = '#333';
-}
-
-function rightward_cell(x, y, width, height, color) {
+function path_right(x, y, width, height, color) {
   var path = new paper.Path();
   path.style = {
     strokeWidth: 2,
@@ -27,10 +8,10 @@ function rightward_cell(x, y, width, height, color) {
   path.add(new paper.Point(x, (height/2) + y));
   path.add(new paper.Point(x + width, (height/2) + y));
 
-  cell(x, y, width, height);
+  return path;
 }
 
-function rightward_arrow_cell(x, y, width, height, color) {
+function arrow_right(x, y, width, height, color) {
   var path = new paper.Path();
   path.style = {
     strokeWidth: 2,
@@ -41,10 +22,10 @@ function rightward_arrow_cell(x, y, width, height, color) {
   path.add(new paper.Point(x + (width * 0.7), (height * 0.5) + y));
   path.add(new paper.Point(x + (width * 0.4), (height * 0.65) + y));
 
-  rightward_cell(x, y, width, height, color);
+  return path;
 }
 
-function leftward_cell(x, y, width, height, color) {
+function path_left(x, y, width, height, color) {
   var path = new paper.Path();
   path.style = {
     strokeWidth: 2,
@@ -54,10 +35,10 @@ function leftward_cell(x, y, width, height, color) {
   path.add(new paper.Point(x + width, (height/2) + y));
   path.add(new paper.Point(x, (height/2) + y));
 
-  cell(x, y, width, height);
+  return path;
 }
 
-function leftward_arrow_cell(x, y, width, height, color) {
+function arrow_left(x, y, width, height, color) {
   var path = new paper.Path();
   path.style = {
     strokeWidth: 2,
@@ -68,10 +49,10 @@ function leftward_arrow_cell(x, y, width, height, color) {
   path.add(new paper.Point(x + (width * 0.3), (height * 0.5) + y));
   path.add(new paper.Point(x + (width * 0.6), (height * 0.65) + y));
 
-  leftward_cell(x, y, width, height, color);
+  return path;
 }
 
-function upward_cell(x, y, width, height, color) {
+function path_up(x, y, width, height, color) {
   var path = new paper.Path();
   path.style = {
     strokeWidth: 2,
@@ -81,10 +62,10 @@ function upward_cell(x, y, width, height, color) {
   path.add(new paper.Point((width/2) + x, y + height));
   path.add(new paper.Point((width/2) + x, y));
 
-  cell(x, y, width, height);
+  return path
 }
 
-function upward_arrow_cell(x, y, width, height, color) {
+function arrow_up(x, y, width, height, color) {
   var path = new paper.Path();
   path.style = {
     strokeWidth: 2,
@@ -95,10 +76,10 @@ function upward_arrow_cell(x, y, width, height, color) {
   path.add(new paper.Point(x + (width * 0.5), (height * 0.3) + y));
   path.add(new paper.Point(x + (width * 0.35), (height * 0.6) + y));
 
-  upward_cell(x, y, width, height, color);
+  return path;
 }
 
-function downward_cell(x, y, width, height, color) {
+function path_down(x, y, width, height, color) {
   var path = new paper.Path();
   path.style = {
     strokeWidth: 2,
@@ -108,10 +89,10 @@ function downward_cell(x, y, width, height, color) {
   path.add(new paper.Point((width/2) + x, y));
   path.add(new paper.Point((width/2) + x, y + height));
 
-  cell(x, y, width, height);
+  return path;
 }
 
-function downward_arrow_cell(x, y, width, height, color) {
+function arrow_down(x, y, width, height, color) {
   var path = new paper.Path();
   path.style = {
     strokeWidth: 2,
@@ -122,10 +103,10 @@ function downward_arrow_cell(x, y, width, height, color) {
   path.add(new paper.Point(x + (width * 0.5), (height * 0.7) + y));
   path.add(new paper.Point(x + (width * 0.35), (height * 0.4) + y));
 
-  downward_cell(x, y, width, height, color);
+  return path;
 }
 
-function top_left_cell(x, y, width, height, color) {
+function path_top_left(x, y, width, height, color) {
   var path = new paper.Path();
   path.style = {
     strokeWidth: 2,
@@ -136,10 +117,10 @@ function top_left_cell(x, y, width, height, color) {
   path.add(new paper.Point((width/2) + x, (height/2) + y));
   path.add(new paper.Point((width/2) + x, y));
 
-  cell(x, y, width, height);
+  return path;
 }
 
-function top_right_cell(x, y, width, height, color) {
+function path_top_right(x, y, width, height, color) {
   var path = new paper.Path();
   path.style = {
     strokeWidth: 2,
@@ -150,10 +131,10 @@ function top_right_cell(x, y, width, height, color) {
   path.add(new paper.Point((width/2) + x, (height/2) + y));
   path.add(new paper.Point(x + width, (height/2) + y));
 
-  cell(x, y, width, height);
+  path;
 }
 
-function bottom_right_cell(x, y, width, height, color) {
+function path_bottom_left(x, y, width, height, color) {
   var path = new paper.Path();
   path.style = {
     strokeWidth: 2,
@@ -164,10 +145,10 @@ function bottom_right_cell(x, y, width, height, color) {
   path.add(new paper.Point((width/2) + x, (height/2) + y));
   path.add(new paper.Point((width/2) + x, y + height));
 
-  cell(x, y, width, height);
+  return path;
 }
 
-function bottom_left_cell(x, y, width, height, color) {
+function path_bottom_right(x, y, width, height, color) {
   var path = new paper.Path();
   path.style = {
     strokeWidth: 2,
@@ -178,69 +159,102 @@ function bottom_left_cell(x, y, width, height, color) {
   path.add(new paper.Point((width/2) + x, (height/2) + y));
   path.add(new paper.Point(x, (height/2) + y));
 
-  cell(x, y, width, height);
+  return path
 }
 
-function text_cell(x, y, width, height, text) {
-  new paper.PointText({
-    point: [x + (width * 0.5), y + (height * 0.75)],
-    content: text,
-    fillColor: '#000',
-    fontFamily: 'Courier New',
-    fontSize: height * 0.8,
-    justification: 'center'
-  });
+const line_types = {
+  "up": path_up,
+  "down": path_down,
+  "left": path_left,
+  "right": path_right,
+  "top_left": path_top_left,
+  "top_right": path_top_right,
+  "bottom_left": path_bottom_left,
+  "bottom_right": path_bottom_right,
 }
 
-// don't know if there is a better way to get functions from script
-var function_list = {
-  " ": cell,
-  "x": closed_cell,
-  "u": upward_cell,
-  "d": downward_cell,
-  "l": leftward_cell,
-  "r": rightward_cell,
-  "ra": rightward_arrow_cell,
-  "la": leftward_arrow_cell,
-  "da": downward_arrow_cell,
-  "ua": upward_arrow_cell,
-  "tl": top_left_cell,
-  "tr": top_right_cell,
-  "bl": bottom_left_cell,
-  "br": bottom_right_cell,
-  "t": text_cell
-};
+const arrow_types = {
+  "up": arrow_up,
+  "down": arrow_down,
+  "left": arrow_left,
+  "right": arrow_right,
+}
 
-export function grid(map, tile_width, tile_height) {
-  var y_size = map.length;
-  var x_size = map[0].length;
+class Cell {
+  constructor(x, y, width, height, line_type, arrow_type, background_color, path_color, text) {
+    this.x = x;
+    this.y = y;
+    this.width = width;
+    this.height = height;
+    this.line_type = line_type;
+    this.arrow_type = arrow_type;
+    this.background_color = background_color;
+    this.path_color = path_color;
+    this.text = text;
+  }
 
-  for (var i = 0; i < y_size; i++) {
-    for (var j = 0; j < x_size; j++) {
-      var value = map[i][j].split(':');
+  init() {
+    console.log('inside init');
+    console.log(this);
 
-      // position of tile
-      var x_pos = j * tile_width;
-      var y_pos = i * tile_height;
+    this.square = new paper.Path.Rectangle({
+      point: [this.x, this.y],
+      size: [this.width, this.height],
+      strokeColor: "#000",
+      fillColor: this.background_color
+    });
 
-      // function to draw tile
-      var function_name = value[0];
-      var function_params = [x_pos, y_pos, tile_width, tile_height];
+    this.textPaper = new paper.PointText({
+      point: [this.x + (this.width * 0.5), this.y + (this.height * 0.75)],
+      content: this.text,
+      fillColor: this.path_color,
+      fontFamily: 'Courier New',
+      fontSize: this.height * 0.8,
+      justification: 'center'
+    });
 
-      // add optional argument
-      if (value.length > 1) function_params.push(value[1]);
-      else function_params.push('');
+    if (this.line_type in line_types) this.line = line_types[this.line_type].apply(null, [this.x, this.y, this.width, this.height, this.path_color]);
+    if (this.arrow_type in arrow_types) this.arrow = arrow_types[this.arrow_type].apply(null, [this.x, this.y, this.width, this.height, this.path_color]);
+  }
+}
 
-      // call function
-      if (function_name !== '') {
-        var fn = function_list[function_name];
-        fn.apply(null, function_params);
+export class Labyrinth {
+  constructor(map, params) {
+    const tile_width = params["tile_width"];
+    const tile_height = params["tile_height"];
+    
+    this.tile_width = tile_width; // this.tile_width = params["tile_width"] doesn't work (undefined attribute)
+    this.tile_height = tile_height;
+    this.map = map;
+
+    this.cells = [];
+    for (var i = 0; i < map.length; i++) {
+      this.cells.push([]);
+      for (var j = 0; j < map[0].length; j++) {
+        var tile = map[i][j];
+
+        // position of tile
+        var x_pos = i * this.tile_width;
+        var y_pos = j * this.tile_height;
+
+        this.cells[i].push(new Cell(x_pos, y_pos, this.tile_width, this.tile_height,
+          tile["line_type"], tile["arrow_type"], tile["background_color"], tile["path_color"], tile["text"]));
       }
     }
   }
 
-  var width = x_size * tile_width;
-  var height = y_size * tile_height;
+  init() {
+    this.cells.forEach(function(row) {
+      row.forEach(function(cell) {
+        cell.init();
+      })
+    })
+  }
 
-  return new paper.Size(width, height);
+  get_size() {
+    var width = this.map.length * this.tile_width;
+    var height = this.map[0].length * this.tile_height;
+
+    return new paper.Size(width, height);
+  }
 }
