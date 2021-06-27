@@ -1,5 +1,6 @@
 {
   "name": "RBTree",
+  "background_color": "",
   "params": {
     "node_radius": 20,
     "x_scale": 0.6,

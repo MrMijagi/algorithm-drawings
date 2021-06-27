@@ -1,0 +1,12 @@
+{
+  "name": "Graph",
+  "background_color": "",
+  "params": {
+    "directed": false,
+    "tile_size": 20,
+    "scale": 1
+  },
+  "structure": {
+
+  }
+}
