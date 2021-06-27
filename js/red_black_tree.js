@@ -69,8 +69,13 @@ class Node {
 }
 
 export class RBTree {
-  constructor(tree, node_radius, x_scale, y_scale) {
-    this.node_radius = node_radius;
+  constructor(tree, params) {
+    const node_radius = params["node_radius"];
+    const x_scale = params["x_scale"];
+    const y_scale = params["y_scale"];
+    Node.activeColor = params["active_color"];
+
+    this.node_radius = node_radius; // this.node_radius = params["node_radius"] doesn't work (attribute is not defined)
     this.x_scale = x_scale;
     this.y_scale = y_scale;
 

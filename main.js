@@ -20,31 +20,26 @@ function set_canvas_size(size) {
   canvas.height = size.height;
 }
 
-function draw_on_canvas(structure) {
+function draw_on_canvas(json_structure) {
   // reset the canvas
   paper.project.activeLayer.removeChildren();
 
   // set canvas size for background (put bigger values if background doesn't cover entire drawing)
-  var size = new paper.Size(1600, 1600);
-  set_canvas_size(size);
+  var rb_tree = new structures[json_structure["name"]](json_structure["structure"], json_structure["params"])
+  set_canvas_size(rb_tree.get_size());
 
   //background
   background('rgb(200, 200, 200)');
 
   // RB Tree
   Node.activeColor = '#2bc5f0';
-  var rb_tree = new RBTree(structure, 20, 0.5, 1);
   rb_tree.init();
-  size = rb_tree.get_size();
 
   // Labirynth
   //size = grid(map, 40, 50);
 
   // Graph
   //size = graph(nodes, connections, false, 50, 0.8);
-
-  // crop canvas size to rendered content
-  set_canvas_size(size);
 
   paper.view.draw();
 }
@@ -85,11 +80,19 @@ var connections = {
   5:[5, 6, '#f0f']
 }
 
+// dict with all structure classes. They have to implement methods init and get_size
+const structures = {
+  "RBTree": RBTree,
+  "Labyrinth": grid,
+  "Graph": graph,
+}
+
 window.onload = function() {
+  // setup paperjs
   var canvas = document.getElementById("myCanvas");
   paper.setup(canvas);
 
-  // create the editor
+  // create the JSON editor
   const container = document.getElementById("jsoneditor")
   const options = {
     mode: 'code',
@@ -125,6 +128,12 @@ window.onload = function() {
     }
     reader.readAsText(file);
   })
+
+  // Download JSON
+  document.getElementById("save").onclick = function() {
+    const text = JSON.stringify(editor.get());
+    saveAs(new Blob([text]), "structure.JSON");
+  };
 
   // Download picture
   document.getElementById("export").onclick = function() {
