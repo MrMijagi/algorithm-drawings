@@ -20,94 +20,33 @@ function set_canvas_size(size) {
   canvas.height = size.height;
 }
 
-var tree = { 
-  1:["104","red", "", 1], 
-  2:["83","black", "", 90], 
-  3:["5", "black", "active", 84],
-  4:["23", "red"],
-  5:["92", "red", "active"],
-  6:["16", "red"],
-  7:["4", "red"],
-  8:["NIL", "black", "", -153],
-  9:["NIL", "black"],
-  12:["NIL", "black"],
-  13:["NIL", "black"],
-  15:["NIL", "black"]
-};
+function draw_on_canvas(structure) {
+  // reset the canvas
+  paper.project.activeLayer.removeChildren();
 
-var tree2 = {
-  1: {
-    "value": "104",
-    "color": "red",
-    "flag": "",
-    "angle": 1
-  },
-  2: {
-    "value": "83",
-    "color": "black",
-    "flag": "",
-    "angle": 90
-  },
-  3: {
-    "value": "5",
-    "color": "black",
-    "flag": "active",
-    "angle": 84
-  },
-  4: {
-    "value": "23",
-    "color": "red",
-    "flag": "",
-    "angle": 0
-  },
-  5: {
-    "value": "92",
-    "color": "red",
-    "flag": "active",
-    "angle": 0
-  },
-  6: {
-    "value": "16",
-    "color": "red",
-    "flag": "",
-    "angle": 0
-  },
-  7: {
-    "value": "4",
-    "color": "red",
-    "flag": "",
-    "angle": 0
-  },
-  8: {
-    "value": "NIL",
-    "color": "black",
-    "flag": "",
-    "angle": -153
-  },
-  9: {
-    "value": "NIL",
-    "color": "black",
-    "flag": "",
-    "angle": 0
-  },
-  12: {
-    "value": "NIL",
-    "color": "black",
-    "flag": "",
-    "angle": 0
-  },
-  13: {
-    "value": "NIL",
-    "color": "black",
-    "flag": "",
-    "angle": 0
-  },
-  15: {
-    "value": "NIL",
-    "color": "black",
-    "flag": "",
-    "angle": 0
-  },
+  // set canvas size for background (put bigger values if background doesn't cover entire drawing)
+  var size = new paper.Size(1600, 1600);
+  set_canvas_size(size);
+
+  //background
+  background('rgb(200, 200, 200)');
+
+  // RB Tree
+  Node.activeColor = '#2bc5f0';
+  var rb_tree = new RBTree(structure, 20, 0.5, 1);
+  rb_tree.init();
+  size = rb_tree.get_size();
+
+  // Labirynth
+  //size = grid(map, 40, 50);
+
+  // Graph
+  //size = graph(nodes, connections, false, 50, 0.8);
+
+  // crop canvas size to rendered content
+  set_canvas_size(size);
+
+  paper.view.draw();
 }
 
 var map = [
@@ -156,50 +95,36 @@ window.onload = function() {
     mode: 'code',
     modes: ['code', 'form', 'text', 'tree', 'view', 'preview'],
     onChange: function() {
-      const structure = editor.get();
-  
-      // reset the canvas
-      paper.project.activeLayer.removeChildren();
-  
-      // set canvas size for background (put bigger values if background doesn't cover entire drawing)
-      var size = new paper.Size(1600, 1600);
-      set_canvas_size(size);
-  
-      //background
-      background('rgb(200, 200, 200)');
-  
-      // RB Tree
-      Node.activeColor = '#2bc5f0';
-      var rb_tree = new RBTree(structure, 20, 0.5, 1);
-      rb_tree.init();
-      size = rb_tree.get_size();
-  
-      // Labirynth
-      //size = grid(map, 40, 50);
-  
-      // Graph
-      //size = graph(nodes, connections, false, 50, 0.8);
-  
-      // crop canvas size to rendered content
-      set_canvas_size(size);
-  
-      paper.view.draw();
+      draw_on_canvas(editor.get());
     }
   }
   const editor = new JSONEditor(container, options)
 
-  // Load a JSON document
-  FileReader.setupInput(document.getElementById('loadDocument'), {
-    readAsDefault: 'Text',
-    on: {
-      load: function (event, file) {
-        editor.setText(event.target.result)
-      }
-    }
-  })
-
   // set json
-  editor.set(tree2);
+  editor.set({});
+
+  const inputElement = document.getElementById("loadDocument")
+
+  // get the value every time the user selects a new file
+  inputElement.addEventListener("change", (e) => {
+    const file = e.target.files[0];
+    if (!file) {
+      console.log("No file!");
+      return
+    }
+    const reader = new FileReader();
+
+    reader.onload = (e) => {
+      const textContent = e.target.result
+      editor.set(JSON.parse(textContent));
+      draw_on_canvas(editor.get());
+    }
+    reader.onerror = (e) => {
+      const error = e.target.error
+      console.error(`Error occured while reading ${file.name}`, error)
+    }
+    reader.readAsText(file);
+  })
 
   // Download picture
   document.getElementById("export").onclick = function() {
