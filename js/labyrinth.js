@@ -134,7 +134,7 @@ function path_top_right(x, y, width, height, color) {
   path;
 }
 
-function path_bottom_left(x, y, width, height, color) {
+function path_bottom_right(x, y, width, height, color) {
   var path = new paper.Path();
   path.style = {
     strokeWidth: 2,
@@ -148,7 +148,7 @@ function path_bottom_left(x, y, width, height, color) {
   return path;
 }
 
-function path_bottom_right(x, y, width, height, color) {
+function path_bottom_left(x, y, width, height, color) {
   var path = new paper.Path();
   path.style = {
     strokeWidth: 2,
@@ -181,7 +181,7 @@ const arrow_types = {
 }
 
 class Cell {
-  constructor(x, y, width, height, line_type, arrow_type, background_color, path_color, text) {
+  constructor(x, y, width, height, line_type, arrow_type, background_color, path_color, border_color, text) {
     this.x = x;
     this.y = y;
     this.width = width;
@@ -190,18 +190,18 @@ class Cell {
     this.arrow_type = arrow_type;
     this.background_color = background_color;
     this.path_color = path_color;
+    this.border_color = border_color;
     this.text = text;
   }
 
   init() {
-    console.log('inside init');
     console.log(this);
 
     this.square = new paper.Path.Rectangle({
       point: [this.x, this.y],
       size: [this.width, this.height],
-      strokeColor: "#000",
-      fillColor: this.background_color
+      strokeColor: this.border_color == "" ? null : this.border_color,
+      fillColor: this.background_color == "" ? null : this.background_color
     });
 
     this.textPaper = new paper.PointText({
@@ -234,11 +234,11 @@ export class Labyrinth {
         var tile = map[i][j];
 
         // position of tile
-        var x_pos = i * this.tile_width;
-        var y_pos = j * this.tile_height;
+        var x_pos = j * this.tile_width;
+        var y_pos = i * this.tile_height;
 
         this.cells[i].push(new Cell(x_pos, y_pos, this.tile_width, this.tile_height,
-          tile["line_type"], tile["arrow_type"], tile["background_color"], tile["path_color"], tile["text"]));
+          tile["line_type"], tile["arrow_type"], tile["background_color"], tile["path_color"], tile["border_color"], tile["text"]));
       }
     }
   }
@@ -252,8 +252,8 @@ export class Labyrinth {
   }
 
   get_size() {
-    var width = this.map.length * this.tile_width;
-    var height = this.map[0].length * this.tile_height;
+    var width = this.map[0].length * this.tile_width;
+    var height = this.map.length * this.tile_height;
 
     return new paper.Size(width, height);
   }

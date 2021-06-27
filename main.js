@@ -10,7 +10,7 @@ function background(color) {
   new paper.Path.Rectangle({
     point: [0, 0],
     size: [width, height],
-    fillColor: color
+    fillColor: color == "" ? null : color
   });
 }
 
@@ -25,22 +25,14 @@ function draw_on_canvas(json_structure) {
   paper.project.activeLayer.removeChildren();
 
   // set canvas size for background (put bigger values if background doesn't cover entire drawing)
-  var rb_tree = new structures[json_structure["name"]](json_structure["structure"], json_structure["params"])
-  set_canvas_size(rb_tree.get_size());
+  var struct = new structures[json_structure["name"]](json_structure["structure"], json_structure["params"])
+  set_canvas_size(struct.get_size());
 
   //background
-  background('rgb(200, 200, 200)');
+  background(json_structure["background_color"]);
 
-  // RB Tree
-  Node.activeColor = '#2bc5f0';
-  rb_tree.init();
-
-  // Labirynth
-  //size = grid(map, 40, 50);
-
-  // Graph
-  //size = graph(nodes, connections, false, 50, 0.8);
-
+  // draw structure
+  struct.init();
   paper.view.draw();
 }
 
