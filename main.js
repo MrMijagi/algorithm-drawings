@@ -51,7 +51,7 @@ window.onload = function() {
   // create the JSON editor
   const container = document.getElementById("jsoneditor")
   const options = {
-    mode: 'code',
+    mode: 'tree',
     modes: ['code', 'form', 'text', 'tree', 'view', 'preview'],
     onChange: function() {
       try {
