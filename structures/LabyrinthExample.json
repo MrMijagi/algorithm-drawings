@@ -7,468 +7,221 @@
   },
   "structure": [
     [
+      {},
       {
-        "line_type": "",
-        "arrow_type": "",
-        "background_color": "",
-        "path_color": "",
-        "border_color": "",
-        "text": ""
-      },
-      {
-        "line_type": "",
-        "arrow_type": "",
-        "background_color": "",
-        "path_color": "",
-        "border_color": "",
+        "path_color": "#000",
         "text": "S"
       },
-      {
-        "line_type": "",
-        "arrow_type": "",
-        "background_color": "",
-        "path_color": "",
-        "border_color": "",
-        "text": ""
-      },
-      {
-        "line_type": "",
-        "arrow_type": "",
-        "background_color": "",
-        "path_color": "",
-        "border_color": "",
-        "text": ""
-      },
-      {
-        "line_type": "",
-        "arrow_type": "",
-        "background_color": "",
-        "path_color": "",
-        "border_color": "",
-        "text": ""
-      },
-      {
-        "line_type": "",
-        "arrow_type": "",
-        "background_color": "",
-        "path_color": "",
-        "border_color": "",
-        "text": ""
-      },
-      {
-        "line_type": "",
-        "arrow_type": "",
-        "background_color": "",
-        "path_color": "",
-        "border_color": "",
-        "text": ""
-      }
+      {},
+      {},
+      {},
+      {},
+      {}
     ],
     [
       {
-        "line_type": "",
-        "arrow_type": "",
         "background_color": "#333",
-        "path_color": "",
-        "border_color": "#000",
-        "text": ""
+        "border_color": "#000"
       },
       {
         "line_type": "down",
-        "arrow_type": "",
-        "background_color": "",
-        "path_color": "",
-        "border_color": "#000",
-        "text": ""
+        "path_color": "#000",
+        "border_color": "#000"
       },
       {
-        "line_type": "",
-        "arrow_type": "",
         "background_color": "#333",
-        "path_color": "",
-        "border_color": "#000",
-        "text": ""
+        "border_color": "#000"
       },
       {
-        "line_type": "",
-        "arrow_type": "",
         "background_color": "#333",
-        "path_color": "",
-        "border_color": "#000",
-        "text": ""
+        "border_color": "#000"
       },
       {
-        "line_type": "",
-        "arrow_type": "",
         "background_color": "#333",
-        "path_color": "",
-        "border_color": "#000",
-        "text": ""
+        "border_color": "#000"
       },
       {
-        "line_type": "",
-        "arrow_type": "",
         "background_color": "#333",
-        "path_color": "",
-        "border_color": "#000",
-        "text": ""
+        "border_color": "#000"
       },
       {
-        "line_type": "",
-        "arrow_type": "",
         "background_color": "#333",
-        "path_color": "",
-        "border_color": "#000",
-        "text": ""
+        "border_color": "#000"
       }
     ],
     [
       {
-        "line_type": "",
-        "arrow_type": "",
         "background_color": "#333",
-        "path_color": "",
-        "border_color": "#000",
-        "text": ""
+        "border_color": "#000"
       },
       {
         "line_type": "top_right",
-        "arrow_type": "",
-        "background_color": "",
         "path_color": "#f00",
-        "border_color": "#000",
-        "text": ""
+        "border_color": "#000"
       },
       {
         "line_type": "right",
         "arrow_type": "right",
-        "background_color": "",
         "path_color": "#0f0",
-        "border_color": "#000",
-        "text": ""
+        "border_color": "#000"
       },
       {
         "line_type": "right",
-        "arrow_type": "",
-        "background_color": "",
         "path_color": "#00f",
-        "border_color": "#00",
-        "text": ""
+        "border_color": "#00"
       },
       {
         "line_type": "bottom_left",
-        "arrow_type": "",
-        "background_color": "",
-        "path_color": "",
-        "border_color": "#000",
-        "text": ""
+        "path_color": "#000",
+        "border_color": "#000"
       },
       {
-        "line_type": "",
-        "arrow_type": "",
         "background_color": "#333",
-        "path_color": "",
-        "border_color": "#000",
-        "text": ""
+        "border_color": "#000"
       },
       {
-        "line_type": "",
-        "arrow_type": "",
         "background_color": "#333",
-        "path_color": "",
-        "border_color": "#000",
-        "text": ""
+        "border_color": "#000"
       }
     ],
     [
       {
-        "line_type": "",
-        "arrow_type": "",
         "background_color": "#333",
-        "path_color": "",
-        "border_color": "#000",
-        "text": ""
+        "border_color": "#000"
       },
       {
-        "line_type": "",
-        "arrow_type": "",
         "background_color": "#ccf",
-        "path_color": "",
-        "border_color": "#000",
-        "text": ""
+        "border_color": "#000"
       },
       {
-        "line_type": "",
-        "arrow_type": "",
         "background_color": "#333",
-        "path_color": "",
-        "border_color": "#000",
-        "text": ""
+        "border_color": "#000"
       },
       {
-        "line_type": "",
-        "arrow_type": "",
         "background_color": "#333",
-        "path_color": "",
-        "border_color": "#000",
-        "text": ""
+        "border_color": "#000"
       },
       {
         "line_type": "down",
         "arrow_type": "down",
-        "background_color": "",
-        "path_color": "",
-        "border_color": "#000",
-        "text": ""
+        "path_color": "#000",
+        "border_color": "#000"
       },
       {
-        "line_type": "",
-        "arrow_type": "",
         "background_color": "#333",
-        "path_color": "",
-        "border_color": "#000",
-        "text": ""
+        "border_color": "#000"
       },
       {
-        "line_type": "",
-        "arrow_type": "",
         "background_color": "#333",
-        "path_color": "",
-        "border_color": "#000",
-        "text": ""
+        "border_color": "#000"
       }
     ],
     [
       {
-        "line_type": "",
-        "arrow_type": "",
         "background_color": "#333",
-        "path_color": "",
-        "border_color": "#000",
-        "text": ""
+        "border_color": "#000"
       },
       {
-        "line_type": "",
-        "arrow_type": "",
         "background_color": "#ccf",
-        "path_color": "",
-        "border_color": "#000",
-        "text": ""
+        "border_color": "#000"
       },
       {
-        "line_type": "",
-        "arrow_type": "",
         "background_color": "#333",
-        "path_color": "",
-        "border_color": "#000",
-        "text": ""
+        "border_color": "#000"
       },
       {
-        "line_type": "",
-        "arrow_type": "",
         "background_color": "#333",
-        "path_color": "",
-        "border_color": "#000",
-        "text": ""
+        "border_color": "#000"
       },
       {
         "line_type": "down",
-        "arrow_type": "",
-        "background_color": "",
-        "path_color": "",
-        "border_color": "#000",
-        "text": ""
+        "path_color": "#000",
+        "border_color": "#000"
       },
       {
-        "line_type": "",
-        "arrow_type": "",
         "background_color": "#333",
-        "path_color": "",
-        "border_color": "#000",
-        "text": ""
+        "border_color": "#000"
       },
       {
-        "line_type": "",
-        "arrow_type": "",
         "background_color": "#333",
-        "path_color": "",
-        "border_color": "#000",
-        "text": ""
+        "border_color": "#000"
       }
     ],
     [
       {
-        "line_type": "",
-        "arrow_type": "",
         "background_color": "#333",
-        "path_color": "",
-        "border_color": "#000",
-        "text": ""
+        "border_color": "#000"
       },
       {
-        "line_type": "",
-        "arrow_type": "",
-        "background_color": "",
-        "path_color": "",
-        "border_color": "#000",
-        "text": ""
+        "border_color": "#000"
       },
       {
         "line_type": "bottom_right",
-        "arrow_type": "",
-        "background_color": "",
-        "path_color": "",
-        "border_color": "#000",
-        "text": ""
+        "path_color": "#000",
+        "border_color": "#000"
       },
       {
         "line_type": "left",
         "arrow_type": "left",
-        "background_color": "",
-        "path_color": "",
-        "border_color": "#000",
-        "text": ""
+        "path_color": "#000",
+        "border_color": "#000"
       },
       {
         "line_type": "top_left",
-        "arrow_type": "",
-        "background_color": "",
-        "path_color": "",
-        "border_color": "#000",
-        "text": ""
+        "path_color": "#000",
+        "border_color": "#000"
       },
       {
-        "line_type": "",
-        "arrow_type": "",
         "background_color": "#333",
-        "path_color": "",
-        "border_color": "#000",
-        "text": ""
+        "border_color": "#000"
       },
       {
-        "line_type": "",
-        "arrow_type": "",
         "background_color": "#333",
-        "path_color": "",
-        "border_color": "#000",
-        "text": ""
+        "border_color": "#000"
       }
     ],
     [
       {
-        "line_type": "",
-        "arrow_type": "",
         "background_color": "#333",
-        "path_color": "",
-        "border_color": "#000",
-        "text": ""
+        "border_color": "#000"
       },
       {
-        "line_type": "",
-        "arrow_type": "",
         "background_color": "#333",
-        "path_color": "",
-        "border_color": "#000",
-        "text": ""
+        "border_color": "#000"
       },
       {
         "line_type": "down",
-        "arrow_type": "",
-        "background_color": "",
-        "path_color": "",
-        "border_color": "#000",
-        "text": ""
+        "path_color": "#000",
+        "border_color": "#000"
       },
       {
-        "line_type": "",
-        "arrow_type": "",
         "background_color": "#333",
-        "path_color": "",
-        "border_color": "#000",
-        "text": ""
+        "border_color": "#000"
       },
       {
-        "line_type": "",
-        "arrow_type": "",
         "background_color": "#333",
-        "path_color": "",
-        "border_color": "#000",
-        "text": ""
+        "border_color": "#000"
       },
       {
-        "line_type": "",
-        "arrow_type": "",
         "background_color": "#333",
-        "path_color": "",
-        "border_color": "#000",
-        "text": ""
+        "border_color": "#000"
       },
       {
-        "line_type": "",
-        "arrow_type": "",
         "background_color": "#333",
-        "path_color": "",
-        "border_color": "#000",
-        "text": ""
+        "border_color": "#000"
       }
     ],
     [
+      {},
+      {},
       {
-        "line_type": "",
-        "arrow_type": "",
-        "background_color": "",
-        "path_color": "",
-        "border_color": "",
-        "text": ""
-      },
-      {
-        "line_type": "",
-        "arrow_type": "",
-        "background_color": "",
-        "path_color": "",
-        "border_color": "",
-        "text": ""
-      },
-      {
-        "line_type": "",
-        "arrow_type": "",
-        "background_color": "",
-        "path_color": "",
-        "border_color": "",
+        "path_color": "#000",
         "text": "F"
       },
-      {
-        "line_type": "",
-        "arrow_type": "",
-        "background_color": "",
-        "path_color": "",
-        "border_color": "",
-        "text": ""
-      },
-      {
-        "line_type": "",
-        "arrow_type": "",
-        "background_color": "",
-        "path_color": "",
-        "border_color": "",
-        "text": ""
-      },
-      {
-        "line_type": "",
-        "arrow_type": "",
-        "background_color": "",
-        "path_color": "",
-        "border_color": "",
-        "text": ""
-      },
-      {
-        "line_type": "",
-        "arrow_type": "",
-        "background_color": "",
-        "path_color": "",
-        "border_color": "",
-        "text": ""
-      }
+      {},
+      {},
+      {},
+      {}
     ]
   ]
 }

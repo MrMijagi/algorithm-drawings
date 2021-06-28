@@ -1,10 +1,10 @@
 class Node {
   constructor(index, value, isRed, active, rotate) {
     this.index = index;
-    this.value = value;
-    this.isRed = isRed;
-    this.isActive = active;
-    this.rotate = rotate;
+    this.value = value ? value : "";
+    this.isRed = isRed ? isRed : false;
+    this.isActive = active ? active : false;
+    this.rotate = rotate ? rotate : null;
   }
 
   init(x, y, radius) {
@@ -58,7 +58,7 @@ class Node {
     });
 
     // rotate the arrow around the node
-    if (this.rotate == 0) {
+    if (!this.rotate) {
       this.arrow.strokeWidth = 0;
       this.arrow_head.strokeWidth = 0;
     }
@@ -99,8 +99,8 @@ export class RBTree {
     // add all nodes to array
     this.nodes = [];
     for (let key of keys) {
-      var isRed = (tree[key]["color"] === 'red' ? true : false);
-      var isActive = (tree[key]["flag"] === 'active' ? true : false);
+      var isRed = (tree[key]["isRed"]);
+      var isActive = (tree[key]["isActive"]);
       this.nodes.push(new Node(key, tree[key]["value"], isRed, isActive, tree[key]["angle"]));
     };
 

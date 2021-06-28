@@ -10,75 +10,51 @@
   "structure": {
     "1": {
       "value": "104",
-      "color": "red",
-      "flag": "",
+      "isRed": true,
       "angle": 1
     },
     "2": {
       "value": "83",
-      "color": "black",
-      "flag": "",
       "angle": 90
     },
     "3": {
       "value": "5",
       "color": "black",
-      "flag": "active",
+      "isActive": true,
       "angle": 84
     },
     "4": {
       "value": "23",
-      "color": "red",
-      "flag": "",
-      "angle": 0
+      "isRed": true
     },
     "5": {
       "value": "92",
-      "color": "red",
-      "flag": "active",
-      "angle": 0
+      "isRed": true,
+      "isActive": true
     },
     "6": {
       "value": "16",
-      "color": "red",
-      "flag": "",
-      "angle": 0
+      "isRed": true
     },
     "7": {
       "value": "4",
-      "color": "red",
-      "flag": "",
-      "angle": 0
+      "isRed": true
     },
     "8": {
       "value": "NIL",
-      "color": "black",
-      "flag": "",
       "angle": -153
     },
     "9": {
-      "value": "NIL",
-      "color": "black",
-      "flag": "",
-      "angle": 0
+      "value": "NIL"
     },
     "12": {
-      "value": "NIL",
-      "color": "black",
-      "flag": "",
-      "angle": 0
+      "value": "NIL"
     },
     "13": {
-      "value": "NIL",
-      "color": "black",
-      "flag": "",
-      "angle": 0
+      "value": "NIL"
     },
     "15": {
-      "value": "NIL",
-      "color": "black",
-      "flag": "",
-      "angle": 0
+      "value": "NIL"
     }
   }
 }

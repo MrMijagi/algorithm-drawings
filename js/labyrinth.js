@@ -186,22 +186,20 @@ class Cell {
     this.y = y;
     this.width = width;
     this.height = height;
-    this.line_type = line_type;
-    this.arrow_type = arrow_type;
-    this.background_color = background_color;
-    this.path_color = path_color;
-    this.border_color = border_color;
-    this.text = text;
+    this.line_type = line_type ? line_type : "";
+    this.arrow_type = arrow_type ? arrow_type : "";
+    this.background_color = background_color ? background_color : null;
+    this.path_color = path_color ? path_color : null;
+    this.border_color = border_color ? border_color : null;
+    this.text = text ? text : "";
   }
 
   init() {
-    console.log(this);
-
     this.square = new paper.Path.Rectangle({
       point: [this.x, this.y],
       size: [this.width, this.height],
-      strokeColor: this.border_color == "" ? null : this.border_color,
-      fillColor: this.background_color == "" ? null : this.background_color
+      strokeColor: this.border_color,
+      fillColor: this.background_color
     });
 
     this.textPaper = new paper.PointText({
