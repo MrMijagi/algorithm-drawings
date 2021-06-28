@@ -1,6 +1,6 @@
 import { RBTree } from './js/red_black_tree.js';
 import { Labyrinth } from './js/labyrinth.js';
-import { graph } from './js/graphs.js';
+import { Graph } from './js/graphs.js';
 
 function background(color) {
   var canvas = document.getElementById('myCanvas');
@@ -36,28 +36,11 @@ function draw_on_canvas(json_structure) {
   paper.view.draw();
 }
 
-var nodes = {
-  1:[0, 0, '1'],
-  2:[4, 0, '2'],
-  3:[4, 2, '3'],
-  4:[2, 2, '4'],
-  5:[2, 1, '5'],
-  6:[0, 2, '6'],
-}
-
-var connections = {
-  1:[1, 2, '#00f'],
-  2:[2, 3, '#0f0'],
-  3:[3, 4, '#f00'],
-  4:[4, 5, '#000'],
-  5:[5, 6, '#f0f']
-}
-
 // dict with all structure classes. They have to implement methods init and get_size
 const structures = {
   "RBTree": RBTree,
   "Labyrinth": Labyrinth,
-  "Graph": graph,
+  "Graph": Graph,
 }
 
 window.onload = function() {
@@ -71,7 +54,11 @@ window.onload = function() {
     mode: 'code',
     modes: ['code', 'form', 'text', 'tree', 'view', 'preview'],
     onChange: function() {
-      draw_on_canvas(editor.get());
+      try {
+        draw_on_canvas(editor.get());
+      } catch (e) {
+        return;
+      }
     }
   }
   const editor = new JSONEditor(container, options)
@@ -92,6 +79,7 @@ window.onload = function() {
 
     reader.onload = (e) => {
       const textContent = e.target.result
+      
       editor.set(JSON.parse(textContent));
       draw_on_canvas(editor.get());
     }
