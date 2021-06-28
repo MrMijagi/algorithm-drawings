@@ -52,9 +52,9 @@ Red-black tree params:
 
 Red-black tree node attributes:
 * `value` - text inside node
-* `color` - background color of the node. Can be either "red" or "black"
-* `flag` - if "active" then border of the node will change to `active_color` parameter
-* `angle` - if not zero, an curved arrow will be drawn around the node. The angle value determines where the arrow will start
+* `isRed` - red background if `true`, black otherwise
+* `isActive` - if `true` then border color of the node will change to `active_color` parameter
+* `angle` - if not null, an curved arrow will be drawn around the node. The angle value determines where the arrow will start
 
 Rendered image from [example](https://github.com/MrMijagi/algorithm-drawings/blob/main/structures/RBTreeExample.json):
 
