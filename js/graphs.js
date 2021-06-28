@@ -137,10 +137,10 @@ export class Graph {
     let connections_dict = structure["connections"];
 
     this.nodes = {};
-    for (var i = 0; i < nodes_dict.length; i++) {
-      let center = get_node_offset(nodes_dict[i]["x"], nodes_dict[i]["y"], this.tile_size);
-      this.nodes[nodes_dict[i]["id"]] = new Node(center, this.node_radius, nodes_dict[i]["value"],
-        nodes_dict[i]["color"], nodes_dict[i]["background_color"], nodes_dict[i]["border_color"]);
+    for (let key in nodes_dict) {
+      let center = get_node_offset(nodes_dict[key]["x"], nodes_dict[key]["y"], this.tile_size);
+      this.nodes[key] = new Node(center, this.node_radius, nodes_dict[key]["value"],
+        nodes_dict[key]["color"], nodes_dict[key]["background_color"], nodes_dict[key]["border_color"]);
     }
 
     this.connections = [];

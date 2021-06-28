@@ -8,62 +8,56 @@
     "scale": 1
   },
   "structure": {
-    "nodes": [
-      {
+    "nodes": {
+      "1": {
         "x": 1,
         "y": 2,
-        "id": 1,
         "value": "2",
         "color": "",
         "background_color": "#ddd",
         "border_color": ""
       },
-      {
+      "2": {
         "x": 7,
         "y": 2,
-        "id": 2,
         "value": "3",
         "color": "#000",
         "background_color": "#faa",
         "border_color": ""
       },
-      {
+      "3": {
         "x": 13,
         "y": 2,
-        "id": 3,
         "value": "1",
         "color": "#000",
         "background_color": "#ddd",
         "border_color": ""
       },
-      {
+      "4": {
         "x": 10,
         "y": 5,
-        "id": 4,
         "value": "12",
         "color": "#f66",
         "background_color": "",
         "border_color": "#f66"
       },
-      {
+      "5": {
         "x": 3,
         "y": 10,
-        "id": 5,
         "value": "4",
         "color": "",
         "background_color": "#ddd",
         "border_color": ""
       },
-      {
+      "6": {
         "x": 11,
         "y": 10,
-        "id": 6,
         "value": "5",
         "color": "",
         "background_color": "#ddd",
         "border_color": ""
       }
-    ],
+    },
     "connections": [
       {
         "from_id": 1,
