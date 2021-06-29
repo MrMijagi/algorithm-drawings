@@ -1,6 +1,5 @@
 class Node {
-  constructor(index, value, isRed, active, rotate) {
-    this.index = index;
+  constructor(value, isRed, active, rotate) {
     this.value = value ? value : "";
     this.isRed = isRed ? isRed : false;
     this.isActive = active ? active : false;
@@ -97,11 +96,9 @@ export class RBTree {
     this.root_x += sum * node_radius * x_scale; // magic formula that calculates middle of the tree
 
     // add all nodes to array
-    this.nodes = [];
+    this.nodes = {};
     for (let key of keys) {
-      var isRed = (tree[key]["isRed"]);
-      var isActive = (tree[key]["isActive"]);
-      this.nodes.push(new Node(key, tree[key]["value"], isRed, isActive, tree[key]["angle"]));
+      this.nodes[key] = new Node(tree[key]["value"], tree[key]["isRed"], tree[key]["isActive"], tree[key]["angle"]);
     };
 
     this.connections = [];
@@ -109,33 +106,23 @@ export class RBTree {
 
   init() {
     // first draw nodes
-    for (let node of this.nodes) {
-      var offset = find_position_offset_from_index(node.index, this.max_level, this.node_radius, this.x_scale, this.y_scale);
+    for (const [key, node] of Object.entries(this.nodes)) {
+      var offset = find_position_offset_from_index(key, this.max_level, this.node_radius, this.x_scale, this.y_scale);
       node.init(this.root_x + offset[0], this.root_y + offset[1], this.node_radius);
     }
 
     // draw connections between nodes
-    for (let node of this.nodes) {
-      var left_child = this.get_node_with_index(node.index * 2);
+    for (const [key, node] of Object.entries(this.nodes)) {
+      var left_child = this.nodes[key * 2];
       if (left_child != null) {
         this.connections.push(this.get_connection_between_nodes(node, left_child));
       }
 
-      var right_child = this.get_node_with_index(node.index * 2 + 1);
+      var right_child = this.nodes[key * 2 + 1];
       if (right_child != null) {
         this.connections.push(this.get_connection_between_nodes(node, right_child));
       }
     }
-  }
-
-  get_node_with_index(index) {
-    for (let node of this.nodes) {
-      if (node.index == index) {
-        return node;
-      }
-    }
-
-    return null;
   }
 
   get_connection_between_nodes(node_parent, node_child) {
