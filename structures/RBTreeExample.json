@@ -62,7 +62,20 @@
       "type": "RBTree_color_change",
       "start": 1,
       "length": 2,
-      "params": [1, 2, 3]
+      "params": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "type": "RBTree_color_change",
+      "start": 0,
+      "length": 1,
+      "params": [
+        4,
+        5
+      ]
     }
   ]
 }

@@ -49,7 +49,7 @@ function draw_on_canvas(animation=false) {
       let animation = animations[index];
       let progress = ((curr_timestamp - last_timestamp) - animation["start"]) / animation["length"];
 
-      struct = apply_animation(struct, progress, animation["type"], animation["params"]);
+      apply_animation(struct, progress, animation["type"], animation["params"]);
     }
   }
 
