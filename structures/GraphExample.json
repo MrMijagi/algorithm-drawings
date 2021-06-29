@@ -13,49 +13,43 @@
         "x": 1,
         "y": 2,
         "value": "2",
-        "color": "",
-        "background_color": "#ddd",
-        "border_color": ""
+        "color": "#000",
+        "background_color": "#ddd"
       },
       "2": {
         "x": 7,
         "y": 2,
         "value": "3",
         "color": "#000",
-        "background_color": "#faa",
-        "border_color": ""
+        "background_color": "#faa"
       },
       "3": {
         "x": 13,
         "y": 2,
         "value": "1",
         "color": "#000",
-        "background_color": "#ddd",
-        "border_color": ""
+        "background_color": "#ddd"
       },
       "4": {
         "x": 10,
         "y": 5,
         "value": "12",
         "color": "#f66",
-        "background_color": "",
         "border_color": "#f66"
       },
       "5": {
         "x": 3,
         "y": 10,
         "value": "4",
-        "color": "",
-        "background_color": "#ddd",
-        "border_color": ""
+        "color": "#000",
+        "background_color": "#ddd"
       },
       "6": {
         "x": 11,
         "y": 10,
         "value": "5",
-        "color": "",
-        "background_color": "#ddd",
-        "border_color": ""
+        "color": "#000",
+        "background_color": "#ddd"
       }
     },
     "connections": [
@@ -63,9 +57,7 @@
         "from_id": 1,
         "to_id": 3,
         "value": "#1",
-        "color": "#330",
         "directed": true,
-        "text_offset": 0.5,
         "text_height": 20,
         "factor": 0.5,
         "segments": [
@@ -99,7 +91,6 @@
         "to_id": 2,
         "value": "#2",
         "color": "#330",
-        "directed": true,
         "text_offset": 0.5,
         "text_height": 20
       },

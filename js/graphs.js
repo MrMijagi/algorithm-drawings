@@ -15,18 +15,18 @@ class Node {
   constructor(center, radius, value, color, background_color, border_color) {
     this.center = center;
     this.radius = radius;
-    this.value = value;
-    this.color = color;
-    this.background_color = background_color;
-    this.border_color = border_color;
+    this.value = value ? value : "";
+    this.color = color ? color : null;
+    this.background_color = background_color ? background_color : null;
+    this.border_color = border_color ? border_color : null;
   }
 
   init() {
     this.circle = new paper.Path.Circle({
       center: this.center,
       radius: this.radius,
-      strokeColor: this.border_color == "" ? null : this.border_color,
-      fillColor: this.background_color == "" ? null : this.background_color,
+      strokeColor: this.border_color,
+      fillColor: this.background_color,
       strokeWidth: 2
     });
 
