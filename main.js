@@ -34,6 +34,15 @@ function draw_on_canvas(json_structure) {
   // draw structure
   struct.init();
   paper.view.draw();
+
+  paper.view.onFrame = function (event) {
+    // A cylic value between -1 and 1
+		var sinus = Math.sin(event.time * 3);
+		
+		// Change the y position of the segment point:
+    console.log(struct.nodes["1"].circle.position.y);
+		struct.nodes["1"].circle.position.y = (sinus * 20) + 100;
+  }
 }
 
 // dict with all structure classes. They have to implement methods init and get_size
