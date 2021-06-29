@@ -1,6 +1,12 @@
 import { RBTree } from './js/red_black_tree.js';
 import { Labyrinth } from './js/labyrinth.js';
 import { Graph } from './js/graphs.js';
+import { apply_animation } from './js/animations.js';
+
+var last_timestamp = 0.;
+var is_restart;
+var curr_timestamp = 0.;
+var editor;
 
 function background(color) {
   var canvas = document.getElementById('myCanvas');
@@ -10,7 +16,7 @@ function background(color) {
   new paper.Path.Rectangle({
     point: [0, 0],
     size: [width, height],
-    fillColor: color == "" ? null : color
+    fillColor: color ? color : null
   });
 }
 
@@ -20,12 +26,14 @@ function set_canvas_size(size) {
   canvas.height = size.height;
 }
 
-function draw_on_canvas(json_structure) {
+function draw_on_canvas(animation=false) {
+  let json_structure = editor.get();
+
   // reset the canvas
   paper.project.activeLayer.removeChildren();
 
   // set canvas size for background (put bigger values if background doesn't cover entire drawing)
-  var struct = new structures[json_structure["name"]](json_structure["structure"], json_structure["params"])
+  let struct = new structures[json_structure["name"]](json_structure["structure"], json_structure["params"])
   set_canvas_size(struct.get_size());
 
   //background
@@ -33,16 +41,19 @@ function draw_on_canvas(json_structure) {
 
   // draw structure
   struct.init();
-  paper.view.draw();
 
-  paper.view.onFrame = function (event) {
-    // A cylic value between -1 and 1
-		var sinus = Math.sin(event.time * 3);
-		
-		// Change the y position of the segment point:
-    console.log(struct.nodes["1"].circle.position.y);
-		struct.nodes["1"].circle.position.y = (sinus * 20) + 100;
+  if (animation) {
+    let animations = editor.get()["animations"];
+
+    for (let index in animations) {
+      let animation = animations[index];
+      let progress = ((curr_timestamp - last_timestamp) - animation["start"]) / animation["length"];
+
+      struct = apply_animation(struct, progress, animation["type"], animation["params"]);
+    }
   }
+
+  paper.view.draw();
 }
 
 // dict with all structure classes. They have to implement methods init and get_size
@@ -58,19 +69,19 @@ window.onload = function() {
   paper.setup(canvas);
 
   // create the JSON editor
-  const container = document.getElementById("jsoneditor")
+  const container = document.getElementById("jsoneditor");
   const options = {
     mode: 'tree',
     modes: ['code', 'form', 'text', 'tree', 'view', 'preview'],
     onChange: function() {
       try {
-        draw_on_canvas(editor.get());
+        draw_on_canvas();
       } catch (e) {
         return;
       }
     }
-  }
-  const editor = new JSONEditor(container, options)
+  };
+  editor = new JSONEditor(container, options);
 
   // set json
   editor.set({});
@@ -90,7 +101,7 @@ window.onload = function() {
       const textContent = e.target.result
       
       editor.set(JSON.parse(textContent));
-      draw_on_canvas(editor.get());
+      draw_on_canvas();
     }
     reader.onerror = (e) => {
       const error = e.target.error
@@ -109,4 +120,24 @@ window.onload = function() {
   document.getElementById("export").onclick = function() {
     paper.view.element.toBlob(function(blob) { saveAs(blob, "image.png");});
   };
+
+  // Start animation
+  document.getElementById("animation").onclick = function() {
+    paper.view.onFrame = function(event) {
+      if (is_restart) {
+        last_timestamp = event.time;
+        is_restart = false;
+      }
+
+      curr_timestamp = event.time;
+      draw_on_canvas(true);
+    }
+  }
+
+  // Restart structure
+  document.getElementById("restart").onclick = function() {
+    paper.view.onFrame = null;
+    is_restart = true;
+    draw_on_canvas();
+  }
 }
