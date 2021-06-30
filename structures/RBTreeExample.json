@@ -19,7 +19,7 @@
     },
     "3": {
       "value": "5",
-      "color": "black",
+      "isRed": true,
       "isActive": true,
       "angle": 84
     },
@@ -75,6 +75,28 @@
       "params": [
         4,
         5
+      ]
+    },
+    {
+      "type": "RBTree_position_change",
+      "start": 0,
+      "length": 2,
+      "params": [
+        {
+          "from": 7,
+          "to": 1
+        }
+      ]
+    },
+    {
+      "type": "RBTree_position_change",
+      "start": 1,
+      "length": 2,
+      "params": [
+        {
+          "from": 1,
+          "to": 10
+        }
       ]
     }
   ]

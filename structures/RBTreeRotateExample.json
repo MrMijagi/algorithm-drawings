@@ -1,0 +1,80 @@
+{
+  "name": "RBTree",
+  "background_color": "",
+  "params": {
+    "node_radius": 20,
+    "x_scale": 0.6,
+    "y_scale": 1,
+    "active_color": "#0ff"
+  },
+  "structure": {
+    "1": {
+      "value": "3"
+    },
+    "2": {
+      "value": "2",
+      "isRed": true
+    },
+    "3": {
+      "value": "NIL"
+    },
+    "4": {
+      "value": "1",
+      "isRed": true
+    },
+    "5": {
+      "value": "NIL"
+    },
+    "8": {
+      "value": "NIL"
+    },
+    "9": {
+      "value": "NIL"
+    }
+  },
+  "animations": [
+    {
+      "type": "RBTree_color_change",
+      "start": 1.5,
+      "length": 1,
+      "params": [
+        1,
+        2      ]
+    },
+    {
+      "type": "RBTree_position_change",
+      "start": 0.5,
+      "length": 1,
+      "params": [
+        {
+          "from": 1,
+          "to": 3
+        },
+        {
+          "from": 2,
+          "to": 1
+        },
+        {
+          "from": 4,
+          "to": 2
+        },
+        {
+          "from": 8,
+          "to": 4
+        },
+        {
+          "from": 9,
+          "to": 5
+        },
+        {
+          "from": 5,
+          "to": 6
+        },
+        {
+          "from": 3,
+          "to": 7
+        }
+      ]
+    }
+  ]
+}

@@ -67,6 +67,34 @@ class Node {
   }
 }
 
+class Connection {
+  constructor(from, to) {
+    this.from = from;
+    this.to = to;
+  }
+
+  init(nodes) {
+    // get parent and child nodes
+    let node_parent = nodes[this.from];
+    let node_child = nodes[this.to];
+
+    // get centers from both nodes
+    let point_start = new paper.Point(node_parent.circle.position);
+    let point_end = new paper.Point(node_child.circle.position);
+
+    // path connecting points
+    this.path = new paper.Path({
+      segments: [point_start, point_end],
+      strokeColor: "#000",
+      strokeWidth: 2
+    });
+
+    // shorten ends to node borders (not centers)
+    this.path.segments[0].point = this.path.getIntersections(node_parent.circle)[0].point;
+    this.path.segments[1].point = this.path.getIntersections(node_child.circle)[0].point;
+  }
+}
+
 export class RBTree {
   constructor(tree, params) {
     const node_radius = params["node_radius"];
@@ -83,7 +111,7 @@ export class RBTree {
     keys.sort();
 
     // calculate max level by taking the biggest index
-    this.max_level = level_from_index(keys[keys.length - 1]);
+    this.max_level = this.level_from_index(keys[keys.length - 1]);
 
     // calculate root node position
     this.root_x = this.node_radius * 3;
@@ -102,50 +130,31 @@ export class RBTree {
     };
 
     this.connections = [];
+    // draw connections between nodes
+    for (const [key, node] of Object.entries(this.nodes)) {
+      var left_child = this.nodes[key * 2];
+      if (left_child != null) {
+        this.connections.push(new Connection(key, key * 2));
+      }
+
+      var right_child = this.nodes[key * 2 + 1];
+      if (right_child != null) {
+        this.connections.push(new Connection(key, key * 2 + 1));
+      }
+    }
   }
 
   init() {
     // first draw nodes
     for (const [key, node] of Object.entries(this.nodes)) {
-      var offset = find_position_offset_from_index(key, this.max_level, this.node_radius, this.x_scale, this.y_scale);
+      var offset = this.find_position_offset_from_index(key);
       node.init(this.root_x + offset[0], this.root_y + offset[1], this.node_radius);
     }
 
-    // draw connections between nodes
-    for (const [key, node] of Object.entries(this.nodes)) {
-      var left_child = this.nodes[key * 2];
-      if (left_child != null) {
-        this.connections.push(this.get_connection_between_nodes(node, left_child));
-      }
-
-      var right_child = this.nodes[key * 2 + 1];
-      if (right_child != null) {
-        this.connections.push(this.get_connection_between_nodes(node, right_child));
-      }
+    // first draw connections
+    for (let connection of this.connections) {
+      connection.init(this.nodes);
     }
-  }
-
-  get_connection_between_nodes(node_parent, node_child) {
-    // get centers from both nodes
-    var point_start = new paper.Point(node_parent.circle.position);
-    var point_end = new paper.Point(node_child.circle.position);
-
-    // path connecting points
-    var tmp_path = new paper.Path();
-    tmp_path.add(point_start, point_end);
-
-    // find intersections for new path
-    var intersections = tmp_path.getIntersections(node_parent.circle);
-    var segment_start = new paper.Segment(intersections[0].point);
-    intersections = tmp_path.getIntersections(node_child.circle);
-    var segment_end = new paper.Segment(intersections[0].point);
-
-    // draw path that connects to border of circle rather than center
-    return new paper.Path({
-      segments: [segment_start, segment_end],
-      strokeColor: '#000',
-      strokeWidth: 2
-    });
   }
 
   get_size() {
@@ -154,32 +163,32 @@ export class RBTree {
 
     return new paper.Size(width, height);
   }
-}
 
-function level_from_index(index) {
-  if (index == 1) return 0;
-  else return Math.floor(Math.log2(index));
-}
-
-function find_position_offset_from_index(index, max_level, node_radius, x_scale, y_scale) {
-  var level = level_from_index(index);
-  var relative_level = max_level - level;
-
-  var x_offset = 0;
-  var y_offset = 0;
-  
-  if (level != 0) {
-    // find level's origin point since it's not root
-    for (var i = 1; i <= level; i++) {
-      var curr_relative_level = max_level - i;
-      x_offset -= Math.pow(2, 2 + curr_relative_level) * node_radius * x_scale;
-    }
-    y_offset += 4 * level * node_radius * y_scale;
+  level_from_index(index) {
+    if (index == 1) return 0;
+    else return Math.floor(Math.log2(index));
   }
 
-  // find x offset
-  var index_offset = Math.abs(Math.pow(2, level) - index);
-  x_offset += index_offset * Math.pow(2, 3 + relative_level) * node_radius * x_scale;
-
-  return [x_offset, y_offset];
+  find_position_offset_from_index(index) {
+    var level = this.level_from_index(index);
+    var relative_level = this.max_level - level;
+  
+    var x_offset = 0;
+    var y_offset = 0;
+    
+    if (level != 0) {
+      // find level's origin point since it's not root
+      for (var i = 1; i <= level; i++) {
+        var curr_relative_level = this.max_level - i;
+        x_offset -= Math.pow(2, 2 + curr_relative_level) * this.node_radius * this.x_scale;
+      }
+      y_offset += 4 * level * this.node_radius * this.y_scale;
+    }
+  
+    // find x offset
+    var index_offset = Math.abs(Math.pow(2, level) - index);
+    x_offset += index_offset * Math.pow(2, 3 + relative_level) * this.node_radius * this.x_scale;
+  
+    return [x_offset, y_offset];
+  }
 }
