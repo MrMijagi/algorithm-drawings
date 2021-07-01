@@ -1,6 +1,7 @@
 import { RBTree } from './js/red_black_tree.js';
 import { Labyrinth } from './js/labyrinth.js';
 import { Graph } from './js/graphs.js';
+import { Container } from './js/container.js';
 import { apply_animation } from './js/animations.js';
 
 var last_timestamp = 0.;
@@ -61,6 +62,7 @@ const structures = {
   "RBTree": RBTree,
   "Labyrinth": Labyrinth,
   "Graph": Graph,
+  "Container": Container,
 }
 
 window.onload = function() {
