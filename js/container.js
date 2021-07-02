@@ -1,33 +1,47 @@
 function get_position_from_direction(element, direction) {
   switch(direction) {
     case 'topCenter':
-      return element.topCenter;
+      return new paper.Point(element.topCenter);
     case 'bottomCenter':
-      return element.bottomCenter;
+      return new paper.Point(element.bottomCenter);
     case 'leftCenter':
-      return element.leftCenter;
+      return new paper.Point(element.leftCenter);
     case 'rightCenter':
-      return element.rightCenter;
+      return new paper.Point(element.rightCenter);
   }
+
+  return undefined;
+}
+
+function get_range_from_direction(element, direction) {
+  switch(direction) {
+    case 'topCenter':
+      return [new paper.Point(element.topLeft), new paper.Point(element.topRight)];
+    case 'bottomCenter':
+      return [new paper.Point(element.bottomLeft), new paper.Point(element.bottomRight)];
+    case 'leftCenter':
+      return [new paper.Point(element.topLeft), new paper.Point(element.bottomLeft)];
+    case 'rightCenter':
+      return [new paper.Point(element.topRight), new paper.Point(element.bottomRight)];
+  }
+
+  return undefined;
 }
 
 function check_if_opposite_direction(a, b) {
-  if (a == "bottomCenter" && b == "topCenter") return true;
-  if (a == "topCenter" && b == "bottomCenter") return true;
-  if (a == "leftCenter" && b == "rightCenter") return true;
-  if (a == "rightCenter" && b == "leftCenter") return true;
+  if (a == "bottomCenter" && b == "topCenter") return 1;
+  if (a == "topCenter" && b == "bottomCenter") return 1;
+  if (a == "leftCenter" && b == "rightCenter") return -1;
+  if (a == "rightCenter" && b == "leftCenter") return -1;
 
-  return false;
+  return 0;
 }
 
 function draw_arrow(path, offset, width, closed, color) {
   let offset_point = path.getPointAt(path.length - offset);
   let normal = path.getNormalAt(path.length - offset);
-  console.log("offset point " + offset_point);
   let point_left = normal.multiply(width);
-  console.log("point left " + point_left);
   let point_right = normal.multiply(-width);
-  console.log("point right " + point_right);
 
   let arrow = new paper.Path({
     segments: [path.segments[path.segments.length - 1], point_left.add(offset_point), point_right.add(offset_point)],
@@ -45,10 +59,15 @@ class Connection {
   constructor(id_from, id_from_direction, from_index, id_to, id_to_direction, to_index, arrow, color, margin, segments) {
     this.id_from = id_from;
     this.id_from_direction = id_from_direction ? id_from_direction : "bottomCenter";
-    this.from_index = from_index ? from_index : null;
+    console.log("-----------");
+    console.log("id_from_direction " + this.id_from_direction);
+    this.from_index = from_index;
+    console.log("from_index " + this.from_index);
     this.id_to = id_to;
     this.id_to_direction = id_to_direction ? id_to_direction : "topCenter";
-    this.to_index = to_index ? to_index : null;
+    console.log("id_to_direction " + this.id_to_direction);
+    this.to_index = to_index;
+    console.log("to_index " + this.to_index);
     this.arrow = arrow ? arrow : false;
     this.color = color ? color : "#000";
     this.margin = margin ? margin : 10;
@@ -57,13 +76,21 @@ class Connection {
 
   init(elements) {
     let element_from = elements[this.id_from];
-    if (this.from_index) element_from = element_from.cells[this.from_index];
+    if (typeof this.from_index !== 'undefined') element_from = element_from.cells[this.from_index];
 
     let element_to = elements[this.id_to];
-    if (this.to_index) element_to = element_to.cells[this.to_index];
+    if (typeof this.to_index !== 'undefined') element_to = element_to.cells[this.to_index];
 
     let from_position = get_position_from_direction(element_from.cell.bounds, this.id_from_direction);
+    console.log(element_to);
     let to_position = get_position_from_direction(element_to.cell.bounds, this.id_to_direction);
+
+    let range = get_range_from_direction(element_from.cell.bounds, this.id_from_direction);
+
+    // check if straight line is possible
+    if (check_if_opposite_direction(this.id_from_direction, this.id_to_direction) && to_position.x >= range[0].x && to_position.x <= range[1].x) {
+      from_position.x = to_position.x;
+    }
 
     this.path = new paper.Path({
       segments: [from_position, to_position],
@@ -85,7 +112,6 @@ class Connection {
     if (this.arrow) {
       this.path_arrow = draw_arrow(this.path, 20, 5, false, this.color);
     }
-    console.log(this.path_arrow);
   }
 }
 

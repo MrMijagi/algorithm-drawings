@@ -2,7 +2,7 @@
   "name": "Container",
   "background_color": "",
   "params": {
-    "size_x": 850,
+    "size_x": 1150,
     "size_y": 350
   },
   "structure": [
@@ -83,7 +83,7 @@
     },
     {
       "type": "Text",
-      "x": 530,
+      "x": 500,
       "y": 280,
       "value": "end",
       "size": 30,
@@ -114,6 +114,49 @@
       "to_direction": "bottomCenter",
       "to_index": 9,
       "arrow": true
+    },
+    {
+      "type": "Container",
+      "x": 730,
+      "y": 140,
+      "width": 55,
+      "height": 55,
+      "cells": [
+        {
+          "value": "1",
+          "background_color": "#afa"
+        },
+        {
+          "value": "2",
+          "background_color": "#afa"
+        },
+        {
+          "value": "3",
+          "background_color": "#afa"
+        },
+        {
+          "value": "4",
+          "color": "#f55"
+        }
+      ]
+    },
+    {
+      "type": "Connection",
+      "from": 0,
+      "from_index": 9,
+      "from_direction": "rightCenter",
+      "to": 9,
+      "to_direction": "leftCenter",
+      "to_index": 0,
+      "color": "#666"
+    },
+    {
+      "type": "Text",
+      "x": 605,
+      "y": 150,
+      "value": "f() ->",
+      "size": 30,
+      "color": "#666"
     }
   ]
 }
