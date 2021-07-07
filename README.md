@@ -10,7 +10,7 @@ To run code, setup simple web server (for example with [http-server](https://www
 
 # Usage
 
-After opening the website, there will be JSON editor on the left and on the right buttons for starting animation (see [Animations](##-Animations)), restarting structure, downloading the rendered image, downloading the JSON file and choosing the JSON file to render.
+After opening the website, there will be JSON editor on the left and on the right buttons for starting animation (see [Animations](#animations)), restarting structure, downloading the rendered image, downloading the JSON file and choosing the JSON file to render.
 
 ![image](https://user-images.githubusercontent.com/45121219/124716278-319a6f80-df04-11eb-81d1-5cb9542b298a.png)
 
@@ -135,7 +135,7 @@ Connection attributes:
 
 Rendered image from [example](https://github.com/MrMijagi/algorithm-drawings/blob/main/structures/ContainerExample.json):
 
-![image (11)](https://user-images.githubusercontent.com/45121219/124713412-d2872b80-df00-11eb-8f8d-f5256961ecce.png)
+![image (12)](https://user-images.githubusercontent.com/45121219/124716856-d4eb8480-df04-11eb-8cec-e196a1ea7660.png)
 
 It's important to note that connection will always try to find the straight path between two elements first before connecting centers of both sides. In the example above the line connecting text "end" with last cell of left container found a straight line, therefore the starting point (at the top of the text) isn't at the center. But if we change the cell that the connection will point to it won't be able to find straight path so it will connect centers:
 
