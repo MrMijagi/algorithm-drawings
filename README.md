@@ -10,9 +10,9 @@ To run code, setup simple web server (for example with [http-server](https://www
 
 # Usage
 
-After opening the website, there will be JSON editor on the left and on the right buttons for downloading the rendered image, downloading the JSON file and choosing the JSON file to render.
+After opening the website, there will be JSON editor on the left and on the right buttons for starting animation (see [Animations](##-Animations)), restarting structure, downloading the rendered image, downloading the JSON file and choosing the JSON file to render.
 
-![image](https://user-images.githubusercontent.com/45121219/123641033-16ec3a80-d822-11eb-8163-1ddda484a921.png)
+![image](https://user-images.githubusercontent.com/45121219/124716278-319a6f80-df04-11eb-81d1-5cb9542b298a.png)
 
 After loading the structure, it will be rendered under the buttons (you can use examples structures in [structures folder](https://github.com/MrMijagi/algorithm-drawings/tree/main/structures).
 
@@ -95,3 +95,60 @@ Connection attributes:
 Rendered image from [example](https://github.com/MrMijagi/algorithm-drawings/blob/main/structures/GraphExample.json):
 
 ![image (8)](https://user-images.githubusercontent.com/45121219/123648742-7dc12200-d829-11eb-8305-0f7edb112982.png)
+
+## Containers
+
+Here you can define arrays of cells - visualization of arrays. You can also create text in different colors as well as connect created texts and cells with arrows.
+
+All elements (text and container) are defined together in list. Each element has unique ID which is its index in that list. Connections take IDs of elements it should connect and the direction (side of the element) it should connect from/to.
+
+Container params:
+* `size_x` - width of the render
+* `size_y` - height of the render
+
+Container (element) attributes:
+* `x` - position on X axis
+* `y` - position on Y axis
+* `width` - width of one cell
+* `height` - height of one cell
+* `cells` - list of cells that can take 3 attributes (value, color, background_color)
+
+Text attributes:
+* `x` - position on X axis (not needed if `after` defined)
+* `y` - position on Y axis (not needed if `after` defined)
+* `value` - text to be rendered
+* `color` - font color
+* `size` - font size
+* `after` - takes ID of other text element and positions this text next to it (`x` and `y` not needed)
+
+Connection attributes:
+* `from` - ID of element from which connection starts
+* `from_direction` - determines from which side of the element the connection will start ("topCenter" | "bottomCenter" | "leftCenter" | "rightCenter")
+* `from_index` - if the element determined by `from` is an array of cells (container) this attribute points to one of them
+* `to` - ID of element to which connection ends
+* `to_direction` - determines to which side of the element the connection will end ("topCenter" | "bottomCenter" | "leftCenter" | "rightCenter")
+* `to_index` - if the element determined by `to` is an array of cells (container) this attribute points to one of them
+* `arrow` - determines if connection should end with arrow head (bool)
+* `color` - color of the connection
+* `margin` - determines how big space there is between end of the connection and the side it connects to (if 0 then connection will touch the side)
+* `segments` - list of points {x, y} that the connection has to go through (useful if the path between elements is not straight)
+
+Rendered image from [example](https://github.com/MrMijagi/algorithm-drawings/blob/main/structures/ContainerExample.json):
+
+![image (11)](https://user-images.githubusercontent.com/45121219/124713412-d2872b80-df00-11eb-8f8d-f5256961ecce.png)
+
+It's important to note that connection will always try to find the straight path between two elements first before connecting centers of both sides. In the example above the line connecting text "end" with last cell of left container found a straight line, therefore the starting point (at the top of the text) isn't at the center. But if we change the cell that the connection will point to it won't be able to find straight path so it will connect centers:
+
+![image](https://user-images.githubusercontent.com/45121219/124714255-cfd90600-df01-11eb-98a7-f1c109149f9f.png)
+
+## Animations
+
+_Animations are still development as for now it's only possible to change positions and colors in Red-black tree._
+
+To use animations you have to append another param at the end of JSON called "animations". This is a list that contains the type of animation, it's parameters, start and duration of animation. You can combine animations if they run one after the other (but don't run them simultaneously - undefined behavior 🙂). After defining animations in JSON, click "Start animation" button and after you want to stop it, click "Restart structure" which will reset JSON to initial state.
+
+Types of animations and their parameters:
+* `RBTree_color_change` - this animation will swap the colors (red -> black, black -> red) of all nodes mentioned in `params` (their indexes defined in `structure`)
+* `RBTree_position_change` - this animation will change the position of node that is determined by index (always in the initial structure - if the node was moved previously, script won't take into account the new position!) pointed by `from` parameter, to position determined by `to` parameter
+
+An option to export animation to GIF is in TODO list 🙂.
