@@ -1,0 +1,64 @@
+{
+  "background": "",
+  "x_size": 1200,
+  "y_size": 650,
+  "elements": {
+    "template": {
+      "x": 0,
+      "y": 0,
+      "width": 50,
+      "height": 50,
+      "background_color": "#d93b7c"
+    },
+    "0.0": {
+      "x": 100,
+      "y": 100,
+      "copy": "template"
+    },
+    "0.1": {
+      "position": "0.0",
+      "x": 200,
+      "copy": "template",
+      "shape": "ellipse"
+    },
+    "0.2": {
+      "position": "0.1",
+      "x": 200,
+      "copy": "template"
+    },
+    "1.0": {
+      "position": "0.0",
+      "y": 200,
+      "copy": "template",
+      "shape": "ellipse"
+    },
+    "1.1": {
+      "position": "0.1",
+      "y": 200,
+      "copy": "template"
+    },
+    "1.2": {
+      "position": "0.2",
+      "y": 200,
+      "copy": "template",
+      "shape": "ellipse"
+    },
+    "2.0": {
+      "position": "1.0",
+      "y": 200,
+      "copy": "template"
+    },
+    "2.1": {
+      "position": "1.1",
+      "y": 200,
+      "copy": "template",
+      "shape": "ellipse"
+    },
+    "2.2": {
+      "position": "1.2",
+      "y": 200,
+      "copy": "template"
+    }
+  },
+  "connections": []
+}

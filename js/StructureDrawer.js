@@ -215,7 +215,7 @@ class Element {
     // text attributes
     this.text = "";
     this.text_color = null;
-    this.text_size = 0;
+    this.text_size = 10;
 
     // paper js items
     this.path = null;
@@ -223,7 +223,6 @@ class Element {
   }
 
   init(elements) {
-    console.log(this);
     let copy = null;
 
     // check if 'looks' attributes should be copied
