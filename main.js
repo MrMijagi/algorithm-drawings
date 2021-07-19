@@ -1,21 +1,26 @@
 import { StructureDrawer } from './js/structureDrawer.js';
 
 var editor;
+var structureDrawer;
+
+function redraw() {
+  structureDrawer.init(editor.get());
+  structureDrawer.draw();
+}
 
 window.onload = function() {
   // setup paperjs
   var canvas = document.getElementById("myCanvas");
-  var structureDrawer = new StructureDrawer(canvas);
+  structureDrawer = new StructureDrawer(canvas);
 
   // create the JSON editor
   const container = document.getElementById("jsoneditor");
   const options = {
-    mode: 'tree',
+    mode: 'code',
     modes: ['code', 'form', 'text', 'tree', 'view', 'preview'],
     onChange: function() {
       try {
-        structureDrawer.init(editor.get());
-        structureDrawer.draw();
+        redraw();
       } catch (e) {
         return;
       }
@@ -41,8 +46,7 @@ window.onload = function() {
       const textContent = e.target.result
       
       editor.set(JSON.parse(textContent));
-      structureDrawer.init(editor.get());
-      structureDrawer.draw();
+      redraw();
     }
     reader.onerror = (e) => {
       const error = e.target.error
