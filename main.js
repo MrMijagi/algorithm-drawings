@@ -1,4 +1,4 @@
-import { StructureDrawer } from './js/structureDrawer.js';
+import StructureDrawer from './node_modules/@toothlessjs/diagram-drawer/index.js';
 
 var editor;
 var structureDrawer;
@@ -31,7 +31,7 @@ window.onload = function() {
   // set json
   editor.set({});
 
-  const inputElement = document.getElementById("loadDocument")
+  const inputElement = document.getElementById("loadDocument");
 
   // get the value every time the user selects a new file
   inputElement.addEventListener("change", (e) => {

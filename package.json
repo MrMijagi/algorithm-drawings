@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@toothlessjs/diagram-drawer": "^1.1.1",
+    "file-saver": "^2.0.5",
+    "jsoneditor": "^9.5.3",
+    "paper": "^0.12.15"
+  }
+}
