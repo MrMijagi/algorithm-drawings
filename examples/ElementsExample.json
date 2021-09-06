@@ -1,0 +1,100 @@
+{
+  "background": "",
+  "x_size": 600,
+  "y_size": 600,
+  "elements": {
+    "first_row": {
+      "x": 0,
+      "y": 0,
+      "background_color": "#aee048",
+      "text_color": "#fff",
+      "text_size": 30
+    },
+    "first_row_0": {
+      "x": 100,
+      "y": 100,
+      "width": 100,
+      "height": 100,
+      "copy": "first_row",
+      "text": "0:0"
+    },
+    "first_row_1": {
+      "position": "first_row_0",
+      "x": 200,
+      "copy": "first_row",
+      "width": 65,
+      "height": 40,
+      "text": "0:1"
+    },
+    "first_row_2": {
+      "position": "first_row_1",
+      "x": 200,
+      "copy": "first_row_1",
+      "shape": "text",
+      "text": "0:2",
+      "background_color": "#d93bbe"
+    },
+    "second_row": {
+      "x": 0,
+      "y": 0,
+      "width": 100,
+      "height": 100,
+      "text_color": "#3bd9be",
+      "text_size": 30
+    },
+    "second_row_0": {
+      "x": 100,
+      "y": 300,
+      "copy": "second_row",
+      "text": "1:0"
+    },
+    "second_row_1": {
+      "position": "second_row_0",
+      "x": 200,
+      "copy": "second_row",
+      "text": "1:1",
+      "border_color": "#3bd9be",
+      "border_width": 10
+    },
+    "second_row_2": {
+      "position": "second_row_1",
+      "x": 200,
+      "copy": "second_row_1",
+      "text": "1:2",
+      "shape": "ellipse"
+    },
+    "text_0": {
+      "x": 110,
+      "y": 450,
+      "shape": "text",
+      "text": "text",
+      "text_size": 40,
+      "text_color": "#f4a"
+    },
+    "text_1": {
+      "position": "text_0",
+      "align": "right",
+      "copy": "text_0",
+      "text": "contatenation",
+      "text_size": 30,
+      "text_color": "#4fa"
+    },
+    "text_2": {
+      "position": "text_1",
+      "align": "right",
+      "copy": "text_0",
+      "text": "works",
+      "text_size": 40,
+      "text_color": "#af4"
+    }
+  },
+  "connections": [
+    {
+      "from": "text_0",
+      "to": "text_2",
+      "path_color": "#fc4",
+      "start_y_offset": 12,
+      "end_y_offset": 12
+    }
+  ]
+}

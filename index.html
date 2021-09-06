@@ -8,17 +8,15 @@
 	<script type="text/javascript" src="node_modules/paper/dist/paper-full.min.js"></script>
 	<!-- For saving files -->
 	<script src="node_modules/file-saver/dist/FileSaver.min.js"></script>
-	<!-- <script type="text/paperscript" src="js/labyrinth.js" canvas="myCanvas"></script> -->
+	<!-- Main -->
 	<script type="module" src="main.js"></script>
 </head>
 <body>
 	<div style="width: 35%; float: left">
-		<div id="jsoneditor" style="width: 100%; height: 700px;"></div>
+		<div id="jsoneditor" style="width: 100%; height: 900px"></div>
 	</div>
 	<div id="paperjscanvas" style="width: 65%; float: right; box-sizing: border-box; padding: 6px;">
 		<div id="buttons">
-			<input id="animation" type="button" value="Start animation" />
-			<input id="restart" type="button" value="Restart structure" />
 			<input id="export" type="button" value="Export to .png" />
 			<input id="save" type="button" value="Download JSON" />
 			<input id="loadDocument" type="file" value="Load json" />
