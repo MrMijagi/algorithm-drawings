@@ -17,10 +17,9 @@
 	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-	<div class="container-fluid d-flex flex-column h-100">
-
-		<div class="row">
+	<div class="appContainer">
+		
+		<div class="header">
 
 			<nav class="navbar p-2 border-bottom bg-light">
 
@@ -58,76 +57,76 @@
 						<input class="btn border-start" id="loadDocument" type="file" value="Load json" />
 
 					</form>
+					
 				</div>
 
 			</nav>
 
 		</div>
+		
+		<div class="tabs border-end">
+			
+			<ul class="nav nav-tabs nav-justified" role="tablist" id="myTab">
 
-		<div class="row flex-grow-1">
+				<li class="nav-item" role="presentation">
+					<button id="editor-tab" class="nav-link active" data-bs-toggle="tab" data-bs-target="#editor" type="button" role="tab" aria-controls="editor" aria-selected="true">Editor</button>
+				</li>
 
-			<div class="col-4 d-flex flex-column p-2 border-end bg-light">
+				<li class="nav-item" role="presentation">
+					<button id="elements-tab" class="nav-link" data-bs-toggle="tab" data-bs-target="#elements" type="button" role="tab" aria-controls="elements" aria-selected="false">Elements</button>
+				</li>
 
-				<ul class="nav nav-tabs nav-justified" role="tablist" id="myTab">
+				<li class="nav-item" role="presentation">
+					<button id="connections-tab" class="nav-link" data-bs-toggle="tab" data-bs-target="#connections" type="button" role="tab" aria-controls="connections" aria-selected="false">Connections</button>
+				</li>
 
-					<li class="nav-item" role="presentation">
-						<button id="editor-tab" class="nav-link active" data-bs-toggle="tab" data-bs-target="#editor" type="button" role="tab" aria-controls="editor" aria-selected="true">Editor</button>
-					</li>
+			</ul>
 
-					<li class="nav-item" role="presentation">
-						<button id="elements-tab" class="nav-link" data-bs-toggle="tab" data-bs-target="#elements" type="button" role="tab" aria-controls="elements" aria-selected="false">Elements</button>
-					</li>
+			<div class="tab-content tabs-content" id="myTabContent">
 
-					<li class="nav-item" role="presentation">
-						<button id="connections-tab" class="nav-link" data-bs-toggle="tab" data-bs-target="#connections" type="button" role="tab" aria-controls="connections" aria-selected="false">Connections</button>
-					</li>
+				<div id="editor" class="tab-pane fade show active h-100" role="tabpanel" aria-labelledby="editor-tab">
 
-				</ul>
+					<div class="h-100" id="jsoneditor"></div>
+					
+				</div>
 
-				<div class="tab-content flex-grow-1 pt-2" id="myTabContent">
+				<div id="elements" class="tab-pane fade p-4" role="tabpanel" aria-labelledby="elements-tab">
 
-					<div id="editor" class="tab-pane fade show active h-100" role="tabpanel" aria-labelledby="editor-tab">
+					<h2 class="pb-2"><center>Elements</center></h2>
 
-						<div class="h-100" id="jsoneditor"></div>
-						
-					</div>
+					<select class="form-select" aria-label="Choose element from list">
+						<option value="1">One</option>
+						<option value="2">Two</option>
+						<option value="3">Three</option>
+					</select>
 
-					<div id="elements" class="tab-pane fade" role="tabpanel" aria-labelledby="elements-tab">
+					<label for="Elem_x" class="form-label">x</label>
+					<input type="range" class="form-range" id="Elem_x">
 
-						<h2><center>Elements</center></h2>
+				</div>
 
-						<select class="form-select" aria-label="Choose element from list">
-							<option value="1">One</option>
-							<option value="2">Two</option>
-							<option value="3">Three</option>
-						</select>
+				<div id="connections" class="tab-pane fade p-4" role="tabpanel" aria-labelledby="connections-tab">
 
-						<label for="Elem_x" class="form-label">x</label>
-						<input type="range" class="form-range" id="Elem_x">
+					<h2 class="pb-2"><center>Connections</center></h2>
 
-					</div>
-
-					<div id="connections" class="tab-pane fade" role="tabpanel" aria-labelledby="connections-tab">
-
-						<h2><center>Connections</center></h2>
-
-						<label for="Conn_start_x_offset" class="form-label">start_x_offset</label>
-						<input type="range" class="form-range" id="Conn_start_x_offset">
-
-					</div>
+					<label for="Conn_start_x_offset" class="form-label">start_x_offset</label>
+					<input type="range" class="form-range" id="Conn_start_x_offset">
 
 				</div>
 
 			</div>
+			
+		</div>
+		
+		<div class="content">
 
-			<div class="col-8 p-0 overflow-auto">
+			<div class="canvasWrapper">
 
 				<canvas id="myCanvas" resize></canvas>
-
 			</div>
-
+			
 		</div>
-
+		
 	</div>
 
 </body>
